@@ -2,6 +2,7 @@
 body {
     background-color: #21132C;
 }
+
 .navbar-ui {
     background-color: #8F00FF;
 }
@@ -9,6 +10,12 @@ body {
         color: #ffffff;
         text-decoration: none;
     }
+
+.nft-flex-layout {
+    display: flex;
+}
+
+
 .nft-card {
     max-width:320px;
     padding:10px;
