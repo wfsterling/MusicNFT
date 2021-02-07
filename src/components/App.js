@@ -5,6 +5,9 @@ import './App.css';
 
 const HIGHREZ_AUDIO_FILE = "music/RussianBlues.mp3";
 const COVER_IMAGE = "images/cover.jpeg"
+const TOKEN_TITLE = "Russian Blues"
+const TOKEN_ARTIST = "Nick, Sergey, and William"
+const TOKEN_PRICE = ".001"
 // const HIGHREZ_AUDIO_FILE = "music/RussianBlues.mp3"
 
 class App extends Component {
@@ -31,12 +34,19 @@ class App extends Component {
                 <div className="card-image">
                   <img src={COVER_IMAGE} alt="cover image" />
                 </div>
+                <h5>{TOKEN_TITLE}</h5>
+                <p>{TOKEN_ARTIST}</p>
               <ReactAudioPlayer
                 // src="music/RussianBlues.mp3"
                 src={HIGHREZ_AUDIO_FILE}
                 // autoPlay
                 controls
               />
+                <div className="token-price-container">
+                  <p>Price:</p>
+                  <p>{TOKEN_PRICE}ETH</p>
+                </div>
+                <button name="Buy">Buy</button>
               </div>
             </main>
           </div>

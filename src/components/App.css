@@ -13,7 +13,14 @@ body {
     max-width:320px;
     padding:10px;
 }
-.nft-card .card-image img{
-    height: 200px;
-    margin-bottom: 10px;
+    .nft-card .card-image {
+        overflow: hidden;
+    }
+        .nft-card .card-image img{
+            height: 200px;
+            margin-bottom: 10px;
+        }
+.token-price-container {
+    display: flex;
+    justify-content: space-between;
 }
