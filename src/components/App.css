@@ -3,16 +3,13 @@ body {
     background-color: #21132C;
 }
 
-.navbar-ui {
-    background-color: #8F00FF;
-}
-    .navbar-ui a {
-        color: #ffffff;
-        text-decoration: none;
-    }
+
 
 .nft-flex-layout {
     display: flex;
+    margin:4em auto;
+    width: 100%;
+    max-width: 1200px;
 }
 
 
@@ -20,6 +17,10 @@ body {
     max-width:320px;
     padding:10px;
 }
+    .nft-card audio {
+        width: auto;
+        margin-bottom: 10px;
+    }
     .nft-card .card-image {
         overflow: hidden;
     }
@@ -27,7 +28,30 @@ body {
             height: 200px;
             margin-bottom: 10px;
         }
+.sample-section{
+    width: 100%;
+    margin: 0 auto;
+    max-width:1200px;
+}
 .token-price-container {
     display: flex;
     justify-content: space-between;
+}
+.card {
+    margin: 10px;
+    box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
+    -moz-box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
+}
+button {
+    width: 100%;
+    max-width: 260px;
+    box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+    -moz-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
+    border-radius: 2em;
+    border: none;
+    background-color:#8F00FF;
+    padding:10px 20px;
+    color: #ffffff;
 }

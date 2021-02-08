@@ -10,7 +10,7 @@ class MusicPreviewCard extends Component {
             
             <div className="card nft-card">
                 <div className="card-image">
-                    <img src={this.props.cover} alt="cover image" />
+                    <img src={this.props.cover} alt="cover" />
                 </div>
                 <h5>{this.props.title}</h5>
                 <p>{this.props.artist}</p>
@@ -18,6 +18,7 @@ class MusicPreviewCard extends Component {
                     src={this.props.sample}
                     // autoPlay
                     controls
+                    controlsList='nodownload'
                 />
                 <div className="token-price-container">
                     <p>Price:</p>
