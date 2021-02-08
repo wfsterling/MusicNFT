@@ -6,7 +6,7 @@ import Web3 from 'web3';
 import Raribletoken from '../abis/RaribleToken.json'
 
 const HIGHREZ_AUDIO_FILE = "music/RussianBlues.mp3";
-const COVER_IMAGE = "images/cover.jpg"
+const COVER_IMAGE = "images/concert/concert1.jpg"
 const TOKEN_TITLE = "Russian Blues"
 const TOKEN_ARTIST = "Nick, Sergey, and William"
 const TOKEN_PRICE = ".001"
@@ -70,21 +70,21 @@ class App extends Component {
                 />
                 <MusicPreviewCard
                   sample={HIGHREZ_AUDIO_FILE}
-                  cover={"images/cover2.jpg"}
+                  cover={"images/concert/concert2.jpg"}
                   title={TOKEN_TITLE}
                   artist={TOKEN_ARTIST}
                   price={TOKEN_PRICE}
                 />
                 <MusicPreviewCard
                   sample={HIGHREZ_AUDIO_FILE}
-                  cover={"images/cover3.jpg"}
+                  cover={"images/concert/concert3.jpg"}
                   title={TOKEN_TITLE}
                   artist={TOKEN_ARTIST}
                   price={TOKEN_PRICE}
                 />
                 <MusicPreviewCard
                   sample={HIGHREZ_AUDIO_FILE}
-                  cover={"images/cover4.jpg"}
+                  cover={"images/concert/concert4.jpg"}
                   title={TOKEN_TITLE}
                   artist={TOKEN_ARTIST}
                   price={TOKEN_PRICE}

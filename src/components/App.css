@@ -10,10 +10,12 @@ body {
     margin:4em auto;
     width: 100%;
     max-width: 1200px;
+    justify-content: space-around;
 }
 
 
 .nft-card {
+    min-width:240px;
     max-width:320px;
     padding:10px;
 }
@@ -23,10 +25,16 @@ body {
     }
     .nft-card .card-image {
         overflow: hidden;
+        height: 200px;
+        width: 100%;
+        margin-bottom: 10px;
     }
         .nft-card .card-image img{
-            height: 200px;
-            margin-bottom: 10px;
+            /* height: 200px; */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
         }
 .sample-section{
     width: 100%;
