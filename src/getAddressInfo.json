@@ -1,0 +1,220 @@
+{
+  "address": "0xe3379f752660d4545c3b54d18de176bf347365d7",
+  "ETH": {
+    "balance": 0.89068897,
+    "price": {
+      "rate": 1732.102106014234,
+      "diff": 9.26,
+      "diff7d": 25.23,
+      "ts": 1612841822,
+      "marketCapUsd": 198488282370.76904,
+      "availableSupply": 114593869.3115,
+      "volume24h": 50009527876.85056,
+      "diff30d": 36.21879172531084,
+      "volDiff1": 22.258348453309182,
+      "volDiff7": 32.11376812314941,
+      "volDiff30": 84.81542480042134
+    }
+  },
+  "countTxs": 83,
+  "tokens": [
+    {
+      "tokenInfo": {
+        "address": "0x22c1f6050e56d2876009903609a2cc3fef83b415",
+        "name": "POAP",
+        "symbol": "The Proof of Attendance Protocol",
+        "totalSupply": "18347",
+        "lastUpdated": 1612835710,
+        "owner": "0x",
+        "issuancesCount": 0,
+        "holdersCount": 138,
+        "price": false
+      },
+      "balance": 1,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0x6b175474e89094c44da98b954eedeac495271d0f",
+        "name": "Dai",
+        "decimals": "18",
+        "symbol": "DAI",
+        "totalSupply": "1866630864249666547889786212",
+        "owner": "0x",
+        "lastUpdated": 1612842014,
+        "issuancesCount": 0,
+        "holdersCount": 293239,
+        "description": "Decentralized multi-collateral stablecoin soft-pegged to the US Dollar by MakerDao.",
+        "image": "/images/mcd-dai.png",
+        "website": "https://makerdao.com/",
+        "twitter": "MakerDAO",
+        "reddit": "MakerDAO",
+        "coingecko": "dai",
+        "ethTransfersCount": 0,
+        "price": {
+          "rate": 1.0011389129259,
+          "diff": 0.03,
+          "diff7d": 0.05,
+          "ts": 1612841887,
+          "marketCapUsd": 1898133702.4625213,
+          "availableSupply": 1895974352.7649822,
+          "volume24h": 904438245.0318499,
+          "diff30d": 0.03114824220786261,
+          "volDiff1": 126.58738414667269,
+          "volDiff7": 73.20682911302416,
+          "volDiff30": 40.57764364813704,
+          "currency": "USD"
+        },
+        "publicTags": ["DeFi", "Stablecoins"]
+      },
+      "balance": 89751150000000000,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0x6c419f839557c6a8b7489a4519ec2d3703dea689",
+        "decimals": "18",
+        "name": "CELLB",
+        "symbol": "DMR2",
+        "totalSupply": "2000000000000000000000",
+        "lastUpdated": 1588214665,
+        "issuancesCount": 0,
+        "holdersCount": 4,
+        "ethTransfersCount": 0,
+        "price": false
+      },
+      "balance": 5.0e20,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0x7afebbb46fdb47ed17b22ed075cde2447694fb9e",
+        "name": "Ocean Token [OLD]",
+        "decimals": "18",
+        "symbol": "OCEAN [OLD]",
+        "totalSupply": "613099141000000000000000000",
+        "owner": "0xbcf0eac47aa2e3f19b81926cd634301bfe18caaf",
+        "lastUpdated": 1603497945,
+        "issuancesCount": 0,
+        "holdersCount": 13208,
+        "ethTransfersCount": 0,
+        "price": false,
+        "publicTags": ["Protocol"]
+      },
+      "balance": 1.43095206130942e22,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0x909141be9eea770127fff3e882a4b25038e13903",
+        "decimals": "18",
+        "name": "CamperCoin",
+        "symbol": "CBT",
+        "totalSupply": "1500000000000000000000",
+        "lastUpdated": 1591669098,
+        "issuancesCount": 0,
+        "holdersCount": 3,
+        "ethTransfersCount": 0,
+        "price": false
+      },
+      "balance": 5.0e20,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0x985dd3d42de1e256d09e1c10f112bccb8015ad41",
+        "name": "OceanToken [OLD]",
+        "decimals": "18",
+        "symbol": "OCEAN [OLD]",
+        "totalSupply": "613099141000000000000000000",
+        "owner": "0xbcf0eac47aa2e3f19b81926cd634301bfe18caaf",
+        "lastUpdated": 1598340334,
+        "issuancesCount": 0,
+        "holdersCount": 11685,
+        "ethTransfersCount": 0,
+        "price": false
+      },
+      "balance": 1.4309520613094187e22,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0xbddab785b306bcd9fb056da189615cc8ece1d823",
+        "name": "Ebakus",
+        "decimals": "18",
+        "symbol": "EBK",
+        "totalSupply": "100000000000000000000000000",
+        "owner": "0xe5ccfca59acd6a3dea18a97a8d12a1fc5be09b13",
+        "lastUpdated": 1580066294,
+        "issuancesCount": 0,
+        "holdersCount": 400617,
+        "image": "/images/EBKbddab785.jpg",
+        "website": "https://www.ebakus.com/",
+        "telegram": "https://t.me/ebakus",
+        "coingecko": "ebakus",
+        "ethTransfersCount": 0,
+        "price": {
+          "rate": 0.00010398876546,
+          "diff": 9.35,
+          "diff7d": 25.32,
+          "ts": 1612841887,
+          "marketCapUsd": 9477.31405273464,
+          "availableSupply": 91137864.8531043,
+          "volume24h": 0,
+          "volDiff7": -100,
+          "volDiff1": -100,
+          "volDiff30": -99.77589627210287,
+          "diff30d": 230.66240338867738,
+          "currency": "USD"
+        }
+      },
+      "balance": 2.1811075999775757e18,
+      "totalIn": 0,
+      "totalOut": 0
+    },
+    {
+      "tokenInfo": {
+        "address": "0xc12d1c73ee7dc3615ba4e37e4abfdbddfa38907e",
+        "name": "KickToken",
+        "decimals": "8",
+        "symbol": "KICK",
+        "totalSupply": "212177100323123631245",
+        "owner": "0x49203c89e0d42420b6d7212baf4a77c57708e3f9",
+        "lastUpdated": 1612818062,
+        "issuancesCount": 0,
+        "holdersCount": 1246510,
+        "website": "https://www.kickico.com/",
+        "facebook": "kickecosystem",
+        "twitter": "KickEcosystem",
+        "image": "/images/KICKc12d1c73.png",
+        "telegram": "https://t.me/kickico",
+        "reddit": "KICKICO_Platform",
+        "coingecko": "kickico",
+        "ethTransfersCount": 0,
+        "price": {
+          "rate": 3.163853124e-5,
+          "diff": 11.08,
+          "diff7d": 61.9,
+          "ts": 1612841888,
+          "marketCapUsd": 1855872.5561589925,
+          "availableSupply": 58658619203.30384,
+          "volume24h": 452044.46414955,
+          "diff30d": 171.62444596683474,
+          "volDiff1": 15.763386203242618,
+          "volDiff7": 118.51060332925618,
+          "volDiff30": 67.58606216647706,
+          "currency": "USD"
+        }
+      },
+      "balance": 88888800000000,
+      "totalIn": 0,
+      "totalOut": 0
+    }
+  ]
+}
