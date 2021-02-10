@@ -2,7 +2,12 @@
 body {
     background-color: #21132C;
 }
-
+p {
+    font-size: 10px;
+}
+p.right-align {
+    text-align: right;
+}
 
 
 .nft-flex-layout {
@@ -11,55 +16,11 @@ body {
     width: 100%;
     max-width: 1200px;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-
-.nft-card {
-    min-width:240px;
+.nft-wrapper {
+    min-width:280px;
     max-width:320px;
-    padding:10px;
-}
-    .nft-card audio {
-        width: auto;
-        margin-bottom: 10px;
-    }
-    .nft-card .card-image {
-        overflow: hidden;
-        height: 200px;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-        .nft-card .card-image img{
-            /* height: 200px; */
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            
-        }
-.sample-section{
-    width: 100%;
-    margin: 0 auto;
-    max-width:1200px;
-}
-.token-price-container {
-    display: flex;
-    justify-content: space-between;
-}
-.card {
-    margin: 10px;
-    box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
-    -webkit-box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
-    -moz-box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
-}
-button {
-    width: 100%;
-    max-width: 260px;
-    box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
-    -moz-box-shadow: 1px 1px 12px 1px rgba(0,0,0,0.6);
-    border-radius: 2em;
-    border: none;
-    background-color:#8F00FF;
-    padding:10px 20px;
-    color: #ffffff;
+    margin-bottom: 10px;
 }

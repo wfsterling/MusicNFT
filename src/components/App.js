@@ -5,12 +5,12 @@ import './App.css';
 import Web3 from 'web3';
 import Raribletoken from '../abis/RaribleToken.json'
 
-const HIGHREZ_AUDIO_FILE = "music/RussianBlues.mp3";
-const COVER_IMAGE = "images/concert/concert1.jpg"
-const TOKEN_TITLE = "Russian Blues"
-const TOKEN_ARTIST = "Nick, Sergey, and William"
-const TOKEN_PRICE = ".001"
-// const HIGHREZ_AUDIO_FILE = "music/RussianBlues.mp3"
+const SAMPLE_AUDIO_FILE = "music/RussianBlues-sample.mp3";
+const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
+const COVER_IMAGE = "images/concert/concert1.jpg";
+const TOKEN_TITLE = "Russian Blues";
+const TOKEN_ARTIST = "Nick, Sergey, and William";
+const TOKEN_PRICE = ".001";
 
 class App extends Component {
 
@@ -106,9 +106,9 @@ class App extends Component {
             <main role="main" className="nft-flex-layout">
               {this.state.tokens.map((token, i) => {
                 return (
-                  <div key={i}>
+                  <div key={i} className="nft-wrapper">
                     <MusicPreviewCard
-                      sample={HIGHREZ_AUDIO_FILE}
+                      sample={SAMPLE_AUDIO_FILE}
                       cover={'images/concert/concert' + i + '.jpg'}
                       title={token.tokenInfo.name}
                       artist={token.tokenInfo.address}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
-
+import './MusicPreviewCard.css'
 
 
 class MusicPreviewCard extends Component {
@@ -22,7 +22,7 @@ class MusicPreviewCard extends Component {
                 />
                 <div className="token-price-container">
                     <p>Price:</p>
-                    <p>{this.props.price}ETH</p>
+                    <p className="right-align">{this.props.price}ETH</p>
                 </div>
                 <button name="Buy">Buy</button>
             </div>

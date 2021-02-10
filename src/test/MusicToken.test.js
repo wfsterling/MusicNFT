@@ -1,6 +1,4 @@
-import { FormControlStatic } from 'react-bootstrap'
-import { Item } from 'react-bootstrap/lib/Breadcrumb'
-import MusicToken from '../contracts/MusicToken.sol'
+import MusicToken = aretifacts.require('../contracts/MusicToken.sol');
 
 require('chai')
     .use(require('chai-as-promised'))
@@ -10,7 +8,9 @@ contract('MusicToken', (accounts) => {
 
     describe('deployment', async() => {
         it('deploys successfully', async() => {
+            it('deploys successfully', async () => {
 
+            })
         })
     })
 })
