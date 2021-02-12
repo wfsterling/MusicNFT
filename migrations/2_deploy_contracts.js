@@ -1,5 +1,5 @@
-const MusicToken = artifacts.require("MusicToken");
+const Mellow = artifacts.require("Mellow");
 
 module.exports = function(deployer) {
-  deployer.deploy(MusicToken);
+  deployer.deploy(Mellow(10));
 };

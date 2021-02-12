@@ -3,14 +3,15 @@ import Header from'./Header';
 import MusicPreviewCard from './MusicPreviewCard'
 import './App.css';
 import Web3 from 'web3';
-import Raribletoken from '../abis/RaribleToken.json'
 
+// While learning REACT components, used the following
+// to run a list of local list of tokens using MetaMask account:
 const SAMPLE_AUDIO_FILE = "music/RussianBlues-sample.mp3";
-const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
-const COVER_IMAGE = "images/concert/concert1.jpg";
-const TOKEN_TITLE = "Russian Blues";
-const TOKEN_ARTIST = "Nick, Sergey, and William";
-const TOKEN_PRICE = ".001";
+// const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
+// const COVER_IMAGE = "images/concert/concert1.jpg";
+// const TOKEN_TITLE = "Russian Blues";
+// const TOKEN_ARTIST = "Nick, Sergey, and William";
+// const TOKEN_PRICE = ".001";
 
 class App extends Component {
 
@@ -35,16 +36,10 @@ class App extends Component {
         console.error(error)
       })
     
-    // fetch('https://api.ethplorer.io/getAddressInfo/0xe3379f752660d4545c3b54D18dE176Bf347365d7?apiKey=freekey')
-    //   .then(response => response.json())
-    //   .then((jsonData) => {
-    //     // jsonData is parsed json object received from url
-    //     console.log(jsonData)
-    //   })
-    //   .catch((error) => {
-    //     // handle your errors here
-    //     console.error(error)
-    //   })
+
+    // Used the following scripts to access tokens. Need more education on how best to read
+    // from tokens, and how to iterate on an ERC1155 (using TokenID) token vs ERC721
+
 
     // GET ACCOUNT
     // https://api.etherscan.io/api?module=account&action=balance&address=0xe3379f752660d4545c3b54D18dE176Bf347365d7&tag=latest&apikey=2AG9EC16HG97UB9WKT4A2JTY8PT55G95R2 
@@ -64,12 +59,6 @@ class App extends Component {
     //Address Info
     // https://api.ethplorer.io/getAddressInfo/0xe3379f752660d4545c3b54D18dE176Bf347365d7?apiKey=freekey
 
-    // const networkID = await web3.eth.net.getId()
-    // const networkData = Raribletoken.networks[networkID]
-    // const abi = Raribletoken.abi
-    // const address = networkData.initialValue
-    // const contract = new web3.eth.Contract(abi, address)
-    // console.log(networkData)
   } 
 
   async loadWeb3() {
@@ -117,28 +106,6 @@ class App extends Component {
                   </div>
                 );
               })}
-
-              {/* <MusicPreviewCard
-                sample={HIGHREZ_AUDIO_FILE}
-                cover={COVER_IMAGE}
-                title={TOKEN_TITLE}
-                artist={TOKEN_ARTIST}
-                price={TOKEN_PRICE}
-              />
-              <MusicPreviewCard
-                sample={HIGHREZ_AUDIO_FILE}
-                cover={"images/concert/concert2.jpg"}
-                title={TOKEN_TITLE}
-                artist={TOKEN_ARTIST}
-                price={TOKEN_PRICE}
-              />
-              <MusicPreviewCard
-                sample={HIGHREZ_AUDIO_FILE}
-                cover={"images/concert/concert3.jpg"}
-                title={TOKEN_TITLE}
-                artist={TOKEN_ARTIST}
-                price={TOKEN_PRICE}
-              /> */}
               
 
             </main>
