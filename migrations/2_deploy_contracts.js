@@ -1,5 +1,5 @@
-const Mellowmaniac = artifacts.require("Melomaniac");
+const Melomaniac = artifacts.require("Melomaniac");
 
 module.exports = function(deployer) {
-  deployer.deploy(Mellowmaniac);
+  deployer.deploy(Melomaniac);
 };
