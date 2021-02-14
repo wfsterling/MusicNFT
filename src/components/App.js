@@ -4,10 +4,6 @@ import Melomaniac from '../abis/Melomaniac.json'
 import MusicPreviewCard from './MusicPreviewCard'
 import './App.css';
 import Web3 from 'web3';
-<<<<<<< HEAD
-// import Raribletoken from './abis/RaribleToken.json'
-=======
->>>>>>> 29f5c19b8da5bd3d36ca44de296e4f80562cd03e
 
 // While learning REACT components, used the following
 // to run a list of local list of tokens using MetaMask account:
@@ -16,7 +12,7 @@ const SAMPLE_AUDIO_FILE = "music/RussianBlues-sample.mp3";
 // const COVER_IMAGE = "images/concert/concert1.jpg";
 // const TOKEN_TITLE = "Russian Blues";
 // const TOKEN_ARTIST = "Nick, Sergey, and William";
-// const TOKEN_PRICE = ".001";
+const TOKEN_PRICE = ".001";
 
 class App extends Component {
 
@@ -24,8 +20,6 @@ class App extends Component {
     this.loadBlockchainData()
   }
 
-<<<<<<< HEAD
-=======
   async loadBlockchainData() {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
     const accounts = await web3.eth.getAccounts()
@@ -68,7 +62,6 @@ class App extends Component {
 
   } 
 
->>>>>>> 29f5c19b8da5bd3d36ca44de296e4f80562cd03e
   async loadWeb3() {
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
@@ -146,18 +139,14 @@ class App extends Component {
                     <MusicPreviewCard
                       sample={SAMPLE_AUDIO_FILE}
                       cover={'images/concert/concert' + (i+1) + '.jpg'}
-                      title={token} // artist
-                      artist = {TOKEN_ARTIST}
+                      title={token} 
+                      artist = {token}
                       price = {TOKEN_PRICE}
-                      // price={token.tokenInfo.symbol}
                     />
                   </div>
                 );
               })}
-<<<<<<< HEAD
-=======
               
->>>>>>> 29f5c19b8da5bd3d36ca44de296e4f80562cd03e
 
             </main>
           </div>
