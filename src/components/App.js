@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Header from'./Header';
+import Melomaniac from '../abis/Melomaniac.json'
 import MusicPreviewCard from './MusicPreviewCard'
 import './App.css';
 import Web3 from 'web3';
-import Raribletoken from '../abis/RaribleToken.json'
+// import Raribletoken from './abis/RaribleToken.json'
 
 const SAMPLE_AUDIO_FILE = "music/RussianBlues-sample.mp3";
 const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
@@ -18,79 +19,63 @@ class App extends Component {
     this.loadBlockchainData()
   }
 
-  async loadBlockchainData() {
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
-    const accounts = await web3.eth.getAccounts()
-    this.setState({account: accounts[0]})
-
-    fetch('https://api.ethplorer.io/getAddressInfo/' + this.state.account + '?apiKey=freekey')
-      .then(response => response.json())
-      .then((jsonData) => {
-        // jsonData is parsed json object received from url
-        this.setState({tokens: jsonData.tokens})
-        // console.log(tokens)
-      })
-      .catch((error) => {
-        // handle your errors here
-        console.error(error)
-      })
-    
-    // fetch('https://api.ethplorer.io/getAddressInfo/0xe3379f752660d4545c3b54D18dE176Bf347365d7?apiKey=freekey')
-    //   .then(response => response.json())
-    //   .then((jsonData) => {
-    //     // jsonData is parsed json object received from url
-    //     console.log(jsonData)
-    //   })
-    //   .catch((error) => {
-    //     // handle your errors here
-    //     console.error(error)
-    //   })
-
-    // GET ACCOUNT
-    // https://api.etherscan.io/api?module=account&action=balance&address=0xe3379f752660d4545c3b54D18dE176Bf347365d7&tag=latest&apikey=2AG9EC16HG97UB9WKT4A2JTY8PT55G95R2 
-
-    // GET ERC721 Token Transfer Events by address (does show tokens)
-    // https://api.etherscan.io/api?module=account&action=tokennfttx&address=0xe3379f752660d4545c3b54D18dE176Bf347365d7&startblock=0&endblock=999999999&sort=asc&apikey=2AG9EC16HG97UB9WKT4A2JTY8PT55G95R2
-
-    // Get ERC20-Token Account Balance for TokenContractAddress
-    // https://api.etherscan.io/api?module=account&action=tokenbalance&contractaddress=0xd07dc4262bcdbf85190c01c996b4c06a461d2430&address=0xe3379f752660d4545c3b54D18dE176Bf347365d7&tag=latest&apikey=2AG9EC16HG97UB9WKT4A2JTY8PT55G95R2
-
-    // Get ERC20-Token TotalSupply by ContractAddress
-    // https://api.etherscan.io/api?module=stats&action=tokensupply&contractaddress=0x2aea4add166ebf38b63d09a75de1a7b94aa24163&apikey=2AG9EC16HG97UB9WKT4A2JTY8PT55G95R2
-
-    // Get token info with Token Address
-    // http://api.ethplorer.io/getTokenInfo/0xd07dc4262bcdbf85190c01c996b4c06a461d2430?apiKey=freekey
-
-    //Address Info
-    // https://api.ethplorer.io/getAddressInfo/0xe3379f752660d4545c3b54D18dE176Bf347365d7?apiKey=freekey
-
-    // const networkID = await web3.eth.net.getId()
-    // const networkData = Raribletoken.networks[networkID]
-    // const abi = Raribletoken.abi
-    // const address = networkData.initialValue
-    // const contract = new web3.eth.Contract(abi, address)
-    // console.log(networkData)
-  } 
-
   async loadWeb3() {
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
-      await window.ehtereum.enable()
+      await window.ethereum.enable()
     }
     else if (window.web3) {
-      window.web3 = Web3(window.web3.currentProvider)
+      window.web3 = new Web3(window.web3.currentProvider)
     }
     else {
-      window.alert("Non-Ethereum browser detected. You should consider installing MetaMask!")
+      window.alert('Non-Ethereum browser detectefd. You should consider tryig MetaMask!')
     }
   }
+
+  async loadBlockchainData() {
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
+    // const web3 = window.web3
+  
+    const accounts = await web3.eth.getAccounts()
+    this.setState({account: accounts[0]})
+
+    // Find which network
+    const networkId = await web3.eth.net.getId()
+    // Find the network id for the contract on the network
+    const networkData = Melomaniac.networks[networkId]
+    if(networkData) {
+      const abi = Melomaniac.abi // from ubi json
+      // contract address on the network
+      const address = networkData.address
+      const contract = new web3.eth.Contract(abi, address);
+      this.setState({ contract })
+      const totalSupply = await contract.methods.totalSupply().call()
+      // console.log(totalSupply)
+      this.setState({ totalSupply })
+      // 
+      for (var i = 1; i <= totalSupply; i++) {
+        const mmc = await contract.methods.mmcs(i-1).call()
+        this.setState({
+          mmcs: [...this.state.mmcs, mmc]
+        })
+      }
+      console.log(this.state.mmcs)
+    }
+    else {
+      window.alert("Smart contract not deployed to detected network")
+    }
+    
+    
+  } 
 
 
   constructor(props){
     super(props);
     this.state = {
       account: '',
-      tokens: []
+      contract: null,
+      totalSupply: 0,
+      mmcs: []
     }
   }
 
@@ -104,42 +89,21 @@ class App extends Component {
 
         <div className="sample-section">
             <main role="main" className="nft-flex-layout">
-              {this.state.tokens.map((token, i) => {
+
+              {this.state.mmcs.map((token, i) => {
                 return (
                   <div key={i} className="nft-wrapper">
                     <MusicPreviewCard
                       sample={SAMPLE_AUDIO_FILE}
-                      cover={'images/concert/concert' + i + '.jpg'}
-                      title={token.tokenInfo.name}
-                      artist={token.tokenInfo.address}
-                      price={token.tokenInfo.symbol}
+                      cover={'images/concert/concert' + (i+1) + '.jpg'}
+                      title={token} // artist
+                      artist = {TOKEN_ARTIST}
+                      price = {TOKEN_PRICE}
+                      // price={token.tokenInfo.symbol}
                     />
                   </div>
                 );
               })}
-
-              {/* <MusicPreviewCard
-                sample={HIGHREZ_AUDIO_FILE}
-                cover={COVER_IMAGE}
-                title={TOKEN_TITLE}
-                artist={TOKEN_ARTIST}
-                price={TOKEN_PRICE}
-              />
-              <MusicPreviewCard
-                sample={HIGHREZ_AUDIO_FILE}
-                cover={"images/concert/concert2.jpg"}
-                title={TOKEN_TITLE}
-                artist={TOKEN_ARTIST}
-                price={TOKEN_PRICE}
-              />
-              <MusicPreviewCard
-                sample={HIGHREZ_AUDIO_FILE}
-                cover={"images/concert/concert3.jpg"}
-                title={TOKEN_TITLE}
-                artist={TOKEN_ARTIST}
-                price={TOKEN_PRICE}
-              /> */}
-              
 
             </main>
           </div>
