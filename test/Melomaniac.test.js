@@ -36,7 +36,7 @@ contract('Melomaniac', (accounts) => {
         it('creates new token', async () => {
             const result = await contract.addMelomaniac('Dirty old men')
             const totalSupply = await contract.totalSupply()
-            console.log('totalSupply:', totalSupply)
+            
             // SUCCESS
             assert.equal(totalSupply, 1)
             const event = result.logs[0].args

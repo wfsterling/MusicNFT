@@ -39,11 +39,13 @@ class App extends Component {
   
     const accounts = await web3.eth.getAccounts()
     this.setState({account: accounts[0]})
+    
 
     // Find which network
     const networkId = await web3.eth.net.getId()
     // Find the network id for the contract on the network
     const networkData = Melomaniac.networks[networkId]
+    
     if(networkData) {
       const abi = Melomaniac.abi // from ubi json
       // contract address on the network
@@ -51,16 +53,40 @@ class App extends Component {
       const contract = new web3.eth.Contract(abi, address);
       this.setState({ contract })
       const totalSupply = await contract.methods.totalSupply().call()
-      // console.log(totalSupply)
       this.setState({ totalSupply })
       // 
+      // Create a new array based on current state:
+      let tokenObj = [];
+
+      
       for (var i = 1; i <= totalSupply; i++) {
-        const mmc = await contract.methods.mmcs(i-1).call()
-        this.setState({
-          mmcs: [...this.state.mmcs, mmc]
+        // Grab Artist
+        const artist_ = await contract.methods.artist.call()
+        const title_ = await contract.methods.title.call()
+        const description_ = await contract.methods.description.call()
+        const price_ = await contract.methods.price.call()
+        const supply_ = await contract.methods.supply.call()
+
+        // Add item to it
+        // data = [artist: artist_, title: title_, description: description_, price: price_, supply: supply_];
+        const data_ = [ artist_, title_, description_, price_, supply_ ];
+        console.log(data_)
+
+        //Pushing New Values
+        this.setState({ 
+          data: [...this.state.data, data_]
         })
+        
+        // Set state
+        // this.setState({ data: data });
+
+
+        // const mmc = await contract.methods.mmcs(i-1).call()
+        // this.setState({
+        //   mmcs: [...this.state.mmcs, mmc]
+        // })
       }
-      console.log(this.state.mmcs)
+      console.log(this.state.data)
     }
     else {
       window.alert("Smart contract not deployed to detected network")
@@ -74,7 +100,11 @@ class App extends Component {
       account: '',
       contract: null,
       totalSupply: 0,
-      mmcs: []
+      data: []
+      // artist: '',
+      // description: '',
+      // price: 0,
+      // supply: 0
     }
   }
 
@@ -82,27 +112,44 @@ class App extends Component {
     return (
       <div> 
         <Header
-          account={this.state.account}
+          // account={this.state.account}
+          account={this.state.data}
         />
 
 
         <div className="sample-section">
             <main role="main" className="nft-flex-layout">
 
-              {this.state.mmcs.map((token, i) => {
+              {/* {this.state.data.map((token, i) => {
                 return (
                   <div key={i} className="nft-wrapper">
                     <MusicPreviewCard
                       sample={SAMPLE_AUDIO_FILE}
                       cover={'images/concert/concert' + (i+1) + '.jpg'}
                       title={token} 
-                      artist = {token}
+                      artist = {token.artist}
                       price = {TOKEN_PRICE}
                     />
                   </div>
                 );
-              })}
+              })} */}
               
+              {/* {this.state.tokenArray.map(function(token) {
+                // Object.keys(obj)
+                return (
+                  <div className="nft-wrapper">
+                    <MusicPreviewCard
+                      sample={SAMPLE_AUDIO_FILE}
+                      cover={'images/concert/concert1.jpg'}
+                      title={token.title} 
+                      artist = {token.artist}
+                      price = {token.price}
+                    />
+                  </div>
+                );
+              })} */}
+              
+             
 
             </main>
           </div>
