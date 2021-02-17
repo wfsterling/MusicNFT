@@ -35,7 +35,6 @@ Open a new console tab:
 ```
 $ truffle migrate
 ```
-You should see a new contract in your /build/contracts. Copy the Melomaniac.json and replace the text in /src/abis/Melomaniac.json
 
 ## About the token
 This is a basic ERC721 Token that uses OpenZeppelin ERC 721; The token creates a list of Artist Names into an array. The number of the array is associated with the tokenID. There is 1 public funtion to this contract, addMelomaniac() which accepts a string name. A token is created, called the string name.
