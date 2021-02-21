@@ -5,14 +5,16 @@ pragma solidity ^0.7.0;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Melomaniac is ERC721 {
-    string[] public mmcs;
+    // string[] public mmcs;
     mapping(string => bool) _mmcExists;
 
-    string public artist;
-    string public title;
-    string public description;
-    uint256 public price;
-    uint256 public supply;
+    string[] public artist;
+    string[] public title;
+    string[] public description;
+    uint[] public price;
+    uint[] public supply;
+
+    uint public mmcId;
 
     constructor() ERC721("Melomaniac", "MMC") public {}
 
@@ -21,15 +23,15 @@ contract Melomaniac is ERC721 {
         // Requrie unique MMC
         require(!_mmcExists[_title]);
 
-        mmcs.push(_title);
-        artist = _artist;
-        description = _description;
-        price = _price;
-        supply = _supply;
+        artist.push(_artist);
+        title.push(_title);
+        description.push(_description);
+        price.push(_price);
+        supply.push(_supply);
+        
+        mmcId = mmcId++;
 
-        uint _id = mmcs.length - 1;
-
-        _mint(msg.sender, _id);
+        _mint(msg.sender, mmcId);
         _mmcExists[_title] = true;
     } 
 
