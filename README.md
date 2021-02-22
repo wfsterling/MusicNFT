@@ -55,15 +55,17 @@ http://localhost:3000/
 
 Tokens should be listed to the browser as cards. The titles of the tokens are listed as both Artist and Title. Price, Hero Image and sample music are local src vars.
 
-##TODO:
-Add to the contract:
+
+Added to the contract:
 * Artist
-* Quantity (tokens to mint)
+
 * Price
 * IPFS hash to HERO_IMAGE
 * IPFS hash to SAMPLE_FILE
 * IPFS hash to MASTER_FILE
 
-Pass new vars to <MusicPreviewCard/>
 
-Create UI to upload images to IPFS, grab the hash returned, and add to the contract for HERO, SAMPLE, MASTER.
+##TODO:
+* Weigh ERC1155 (create contract)
+* Add quantity of tokens (ERC1155?)
+Create UI to upload images to IPFS, grab the hash returned, and add to the contract for HERO, SAMPLE, MASTER. As of the latest commit, IPFS works unreliably--requires running my local IPFS node?
