@@ -43,8 +43,8 @@ This is a basic ERC721 Token that uses OpenZeppelin ERC 721; The token creates a
 ```
 $ melo = await Melomaniac.deployed()
 $ // Creates local reference
-$ melo.addMelomaniac("Dirty Old Men - Live")
-$ // creates new token "Dirty Old Men - Live"
+$ melo.addMelomaniac("TranzicTrip","In the studio","The bands last performance, was it fate? Battle of the bands with the fastest performance of 'You Don't Have to Find Jesus' and 'Slip Inside'.", 3, 10)
+$ // creates new token based on the title "In the studio"
 ```
 
 ### View tokens in a browser
