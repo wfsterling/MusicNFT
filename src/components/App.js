@@ -7,9 +7,9 @@ import Web3 from 'web3';
 
 // While learning REACT components, used the following
 // to run a list of local list of tokens using MetaMask account:
-const SAMPLE_AUDIO_FILE = "music/RussianBlues-sample.mp3";
+const SAMPLE_AUDIO_FILE = "https://ipfs.io/ipfs/QmUSeLArt2H7Pr1nsj4Md94tkjGyQoWWj2iRFhddSYfany";
 // const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
-// const COVER_IMAGE = "images/concert/concert1.jpg";
+const TOKEN_COVER = "https://ipfs.io/ipfs/QmT6iGtffKzqjkgsVVi6jUytcecGLgwd9XjNjcmXcMU2UY";
 // const TOKEN_TITLE = "Russian Blues";
 // const TOKEN_ARTIST = "Nick, Sergey, and William";
 const TOKEN_PRICE = ".001";
@@ -39,28 +39,42 @@ class App extends Component {
   
     const accounts = await web3.eth.getAccounts()
     this.setState({account: accounts[0]})
+    
 
     // Find which network
     const networkId = await web3.eth.net.getId()
     // Find the network id for the contract on the network
     const networkData = Melomaniac.networks[networkId]
+    
     if(networkData) {
       const abi = Melomaniac.abi // from ubi json
       // contract address on the network
       const address = networkData.address
+      this.setState({ address })
       const contract = new web3.eth.Contract(abi, address);
       this.setState({ contract })
       const totalSupply = await contract.methods.totalSupply().call()
-      // console.log(totalSupply)
       this.setState({ totalSupply })
       // 
+      
+      
+      
       for (var i = 1; i <= totalSupply; i++) {
-        const mmc = await contract.methods.mmcs(i-1).call()
+        // Grab Artist
+        const type_ = 'mmc-token'
+        const artist_ = await contract.methods.artist(i-1).call()
+        const title_ = await contract.methods.title(i-1).call()
+        const description_ = await contract.methods.description(i-1).call()
+        const price_ = await contract.methods.price(i-1).call()
+        const supply_ = await contract.methods.supply(i-1).call()
+
+        let data_ = [ type_, artist_, title_, description_, price_, supply_];
+
+
         this.setState({
-          mmcs: [...this.state.mmcs, mmc]
-        })
+          data: [ this.state.data, data_ ]
+        });
       }
-      console.log(this.state.mmcs)
     }
     else {
       window.alert("Smart contract not deployed to detected network")
@@ -74,7 +88,7 @@ class App extends Component {
       account: '',
       contract: null,
       totalSupply: 0,
-      mmcs: []
+      data: []
     }
   }
 
@@ -88,21 +102,53 @@ class App extends Component {
 
         <div className="sample-section">
             <main role="main" className="nft-flex-layout">
+              { console.log("this.state.data: ", this.state.data[1]) }
 
-              {this.state.mmcs.map((token, i) => {
+              {this.state.data.map((token) => {
+                if(token[0] == 'mmc-token') 
+                  return (
+                    <div className="nft-wrapper">
+                      <MusicPreviewCard
+                        sample={SAMPLE_AUDIO_FILE}
+                        cover={TOKEN_COVER}
+                        title={token[2]} 
+                        artist = {token[1]}
+                        price = {TOKEN_PRICE}
+                      />
+                    </div>
+                  );
+
+                return 
+              })}
+
+
+
+            {/* {this.state.data.map(function(item) { return (
+              <div key={item.mmcId}>
+              <span>
+              <p>{item.title}</p>
+              </span> <span>{item.artist}</span> <span>{item.description}</span> <span>{item.supply}</span>
+              </div> );
+            })} */}
+
+
+              
+              {/* {this.state.tokenArray.map(function(token) {
+                // Object.keys(obj)
                 return (
-                  <div key={i} className="nft-wrapper">
+                  <div className="nft-wrapper">
                     <MusicPreviewCard
                       sample={SAMPLE_AUDIO_FILE}
-                      cover={'images/concert/concert' + (i+1) + '.jpg'}
-                      title={token} 
-                      artist = {token}
-                      price = {TOKEN_PRICE}
+                      cover={'images/concert/concert1.jpg'}
+                      title={token.title} 
+                      artist = {token.artist}
+                      price = {token.price}
                     />
                   </div>
                 );
-              })}
+              })} */}
               
+             
 
             </main>
           </div>

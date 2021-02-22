@@ -34,9 +34,9 @@ contract('Melomaniac', (accounts) => {
 
     describe('minting', async () => {
         it('creates new token', async () => {
-            const result = await contract.addMelomaniac('Dirty old men')
+            const result = await contract.addMelomaniac("TranzicTrip","In the studio","The bands last performance, was it fate? Battle of the bands with the fastest performance of 'You Don't Have to Find Jesus' and 'Slip Inside'.", 3, 10)
             const totalSupply = await contract.totalSupply()
-            console.log('totalSupply:', totalSupply)
+            
             // SUCCESS
             assert.equal(totalSupply, 1)
             const event = result.logs[0].args
@@ -45,16 +45,15 @@ contract('Melomaniac', (accounts) => {
             assert.equal(event.to, accounts[0])
 
             // FAILURE
-            await contract.addMelomaniac('Dirty old men 2')
+            await contract.addMelomaniac("Dirty Old Men","Loose on the Streets","The bands last performance, was it fate? Battle of the bands with the fastest performance of 'You Don't Have to Find Jesus' and 'Slip Inside'.", 3, 10)
             assert.equal(event.tokenId.toNumber(), 1, 'id is incorrect')
         })    
     })
 
     describe('indexing', async () => {
         it('lists maniacs', async () => {
-            await contract.addMelomaniac('Dirty old men 2')
-            await contract.addMelomaniac('Low Rider')
             await contract.addMelomaniac('TranzicTrip')
+            await contract.addMelomaniac('Dirty Old Men')
             for (var i = 1; i <= totalSupply; i++) {
                 const mmc = await contract.methods.mmcs(i - 1).call()
                 this.setState({
