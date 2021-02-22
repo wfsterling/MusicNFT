@@ -57,46 +57,24 @@ class App extends Component {
       this.setState({ totalSupply })
       // 
       
-      // Create a new array based on current state:
-      let data_ = [];
       
       
       for (var i = 1; i <= totalSupply; i++) {
         // Grab Artist
+        const type_ = 'mmc-token'
         const artist_ = await contract.methods.artist(i-1).call()
         const title_ = await contract.methods.title(i-1).call()
         const description_ = await contract.methods.description(i-1).call()
         const price_ = await contract.methods.price(i-1).call()
         const supply_ = await contract.methods.supply(i-1).call()
 
-        // Add item to it
-        // data = [artist: artist_, title: title_, description: description_, price: price_, supply: supply_];
-        
-        // data_ = [ artist_, title_, description_, price_, supply_];
-        // const data_ = artist_
-        let data_ = [ artist_, title_, description_, price_, supply_];
-        
-        // this.setState({
-        //   data: [ this.state.data, [ artist_, title_, description_, price_, supply_] ]
-        // });
+        let data_ = [ type_, artist_, title_, description_, price_, supply_];
+
 
         this.setState({
           data: [ this.state.data, data_ ]
         });
-        
-        // Set state
-        // this.setState({ 
-        //   data: { ...data_ }
-        // });
-
-
-        // const mmc = await contract.methods.mmcs(i-1).call()
-        // this.setState({
-        //   mmcs: [...this.state.mmcs, mmc]
-        // })
       }
-
-      // console.log(this.state.data)
     }
     else {
       window.alert("Smart contract not deployed to detected network")
@@ -111,10 +89,6 @@ class App extends Component {
       contract: null,
       totalSupply: 0,
       data: []
-      // artist: '',
-      // description: '',
-      // price: 0,
-      // supply: 0
     }
   }
 
@@ -123,7 +97,6 @@ class App extends Component {
       <div> 
         <Header
           account={this.state.account}
-          // account={this.state.data}
         />
 
 
@@ -132,17 +105,20 @@ class App extends Component {
               { console.log("this.state.data: ", this.state.data[1]) }
 
               {this.state.data.map((token) => {
-                return (
-                  <div className="nft-wrapper">
-                    <MusicPreviewCard
-                      sample={SAMPLE_AUDIO_FILE}
-                      cover={TOKEN_COVER}
-                      title={token[2]} 
-                      artist = {token[1]}
-                      price = {TOKEN_PRICE}
-                    />
-                  </div>
-                );
+                if(token[0] == 'mmc-token') 
+                  return (
+                    <div className="nft-wrapper">
+                      <MusicPreviewCard
+                        sample={SAMPLE_AUDIO_FILE}
+                        cover={TOKEN_COVER}
+                        title={token[2]} 
+                        artist = {token[1]}
+                        price = {TOKEN_PRICE}
+                      />
+                    </div>
+                  );
+
+                return 
               })}
 
 
