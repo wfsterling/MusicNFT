@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from'./Header';
-import DisplayTokens from'./DisplayTokens';
-import UploadToIPFS from'./UploadToIPFS';
-import TokenForm from'./TokenForm';
+import { Link, withRouter } from "react-router-dom";
 import Melomaniac from '../abis/Melomaniac.json'
+import MusicPreviewCard from './MusicPreviewCard'
 import './App.css';
 import Web3 from 'web3';
 
@@ -17,7 +14,7 @@ const TOKEN_COVER = "https://ipfs.io/ipfs/QmT6iGtffKzqjkgsVVi6jUytcecGLgwd9XjNjc
 // const TOKEN_ARTIST = "Nick, Sergey, and William";
 const TOKEN_PRICE = ".001";
 
-class App extends Component {
+class DisplayTokens extends Component {
 
   componentWillMount() {
     this.loadBlockchainData()
@@ -58,7 +55,26 @@ class App extends Component {
       this.setState({ contract })
       const totalSupply = await contract.methods.totalSupply().call()
       this.setState({ totalSupply })
+      // 
+      
+      
+      
+      for (var i = 1; i <= totalSupply; i++) {
+        // Grab Artist
+        const type_ = 'mmc-token'
+        const artist_ = await contract.methods.artist(i-1).call()
+        const title_ = await contract.methods.title(i-1).call()
+        const description_ = await contract.methods.description(i-1).call()
+        const price_ = await contract.methods.price(i-1).call()
+        const supply_ = await contract.methods.supply(i-1).call()
 
+        let data_ = [ type_, artist_, title_, description_, price_, supply_];
+
+
+        this.setState({
+          data: [ this.state.data, data_ ]
+        });
+      }
     }
     else {
       window.alert("Smart contract not deployed to detected network")
@@ -79,22 +95,48 @@ class App extends Component {
   render() {
     return (
       <div> 
-        <Router>
-          <Header
-            account={this.state.account}
-          />
-          <div className="header-spacer"></div>
-        
-          <Switch>
-            <Route path="/" exact component={() => <DisplayTokens />} />
-            <Route path="/tokenForm" exact component={() => <TokenForm />} />
-            <Route path="/upload" exact component={() => <UploadToIPFS />} />
-          </Switch>
-        </Router>
-          
+        <div className="create-bar">
+            <Link to="/tokenForm">
+                <button 
+                    type="button"
+                    className="create-btn"
+                    >Create Collectible</button>
+            </Link>
+        </div>
+
+        <div className="sample-section">
+            <main role="main" className="nft-flex-layout">
+              { console.log("this.state.data: ", this.state.data[1]) }
+
+              {this.state.data.map((token) => {
+                if(token[0] == 'mmc-token') 
+                  return (
+                    <div className="nft-wrapper">
+                      <MusicPreviewCard
+                        sample={SAMPLE_AUDIO_FILE}
+                        cover={TOKEN_COVER}
+                        title={token[2]} 
+                        artist = {token[1]}
+                        price = {TOKEN_PRICE}
+                      />
+                    </div>
+                  );
+
+                return 
+              })}
+
+
+
+            
+              
+             
+
+            </main>
+          </div>
+      
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(DisplayTokens);
