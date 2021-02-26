@@ -7,9 +7,9 @@ import Web3 from 'web3';
 
 // While learning REACT components, used the following
 // to run a list of local list of tokens using MetaMask account:
-const SAMPLE_AUDIO_FILE = "https://ipfs.io/ipfs/QmUSeLArt2H7Pr1nsj4Md94tkjGyQoWWj2iRFhddSYfany";
+const SAMPLE_AUDIO_FILE = "https://ipfs.io/ipfs/QmUhK2dTTGpRXNE8xNN3SsFobmTFmRnYZQCYnHDh8qRzp4";
 // const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
-const TOKEN_COVER = "https://ipfs.io/ipfs/QmT6iGtffKzqjkgsVVi6jUytcecGLgwd9XjNjcmXcMU2UY";
+const TOKEN_COVER = "https://ipfs.io/ipfs/QmNaPs8M7d1w1Y8hNyqQTF7gBBaJZNooDU44zaDtqfFh5B";
 // const TOKEN_TITLE = "Russian Blues";
 // const TOKEN_ARTIST = "Nick, Sergey, and William";
 const TOKEN_PRICE = ".001";
@@ -109,7 +109,7 @@ class DisplayTokens extends Component {
               { console.log("this.state.data: ", this.state.data[1]) }
 
               {this.state.data.map((token) => {
-                if(token[0] == 'mmc-token') 
+                if(token[0] === 'mmc-token') 
                   return (
                     <div className="nft-wrapper">
                       <MusicPreviewCard
@@ -122,14 +122,9 @@ class DisplayTokens extends Component {
                     </div>
                   );
 
-                return 
+                return null
               })}
 
-
-
-            
-              
-             
 
             </main>
           </div>

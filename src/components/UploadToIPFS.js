@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-'use strict'
-
+import './App.css';
 const React = require('react')
 const ipfsClient = require('ipfs-http-client')
+
 
 class UploadToIPFS extends React.Component {
   constructor () {

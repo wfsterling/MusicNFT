@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
-import Header from "./Header";
+import React from "react";
 import "./App.css";
 import "./TokenForm.css";
-import Web3 from "web3";
+// import Web3 from "web3";
 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -102,7 +101,25 @@ export default function SignUp() {
                 name="supply"
               />
             </Grid>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <input 
+                  type="file"
+                  accept="image/*"
+                  style={{ display: 'none' }} 
+                  id="contained-button-file"
+                  onChange={changeHandler}
+                />
+                <label htmlFor="contained-button-file" onChange={changeHandler}> 
+                  <Button variant="contained" color="primary" component="span"  onClick={handleSubmission}> 
+                    Upload 
+                  </Button> 
+                </label> 
+              </Grid>
+            </Grid>
+
             <Divider variant="middle" className="fullDivider"/>
+
             <Grid item xs={12} className="submit-wrapper">
               <Button
                 type="submit"
@@ -113,19 +130,12 @@ export default function SignUp() {
               >
                 Create Collectible
               </Button>
-
-
+             
             </Grid>
           </Grid>
           
           <Grid container justify="flex-end">
-            <Grid item>
-              <input 
-                type="file"
-                accept="image/*"
-                style={{ display: 'none' }} 
-                id="contained-button-file"
-              /> 
+            <Grid item> 
               {/* {isSelected ? (
                 <div>
                   <p>Filename: {selectedFile.name}</p>
@@ -139,11 +149,7 @@ export default function SignUp() {
               ) : (
                 <p>Select a file to show details</p>
               )} */}
-              {/* <label htmlFor="contained-button-file" onChange={changeHandler}> 
-                <Button variant="contained" color="primary" component="span"  onClick={handleSubmission}> 
-                  Upload 
-                </Button> 
-              </label>  */}
+              
               <Link href="/upload" variant="body2">
                 Already have an account? Upload
               </Link>
