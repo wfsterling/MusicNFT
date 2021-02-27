@@ -33,16 +33,17 @@ class UploadToIPFS extends React.Component {
   // Add file to IPFS and return a CID
   async saveToIpfs ([ file ]) {
     try {
-      const added = await this.state.ipfs.add(
-        file,
-        {
-          progress: (prog) => console.log(`received: ${prog}`)
-        }
-      )
+      // const added = await this.state.ipfs.add(
+      //   file,
+      //   {
+      //     progress: (prog) => console.log(`Areceived: ${prog}`)
+      //   }
+      // )
+      const added = await this.state.ipfs.add(file)
       console.log(added)
       this.setState({ added_file_hash: added.cid.toString() })
     } catch (err) {
-      console.error(err)
+      console.error('saving err: ',err)
     }
   }
 
@@ -63,7 +64,7 @@ class UploadToIPFS extends React.Component {
       console.log(added)
       this.setState({ added_file_hash: added.cid.toString() })
     } catch (err) {
-      console.error(err)
+      console.error("saving error:",err)
     }
   }
 
@@ -86,7 +87,7 @@ class UploadToIPFS extends React.Component {
             <label htmlFor='keep-filename'><input type='checkbox' id='keep-filename' name='keep-filename' /> keep filename</label>
           </form>
           <div>
-            <a id="gateway-link" target='_blank'
+            <a id="gateway-link" target='_addedFile'
               href={'https://ipfs.io/ipfs/' + this.state.added_file_hash}>
               {this.state.added_file_hash}
             </a>
