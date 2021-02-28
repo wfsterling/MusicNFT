@@ -37,41 +37,72 @@ class TokenForm extends React.Component {
   constructor () {
     super()
     this.state = {
-      added_file_hash: null
+      added_file_hash: null,
+      added_sample_hash: null,
+      added_master_hash: null
     }
 
     // bind methods
-    this.captureFile = this.captureFile.bind(this)
-    this.saveToIpfs = this.saveToIpfs.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.captureHero = this.captureHero.bind(this)
+    this.heroToIpfs = this.heroToIpfs.bind(this)
+    this.captureSample = this.captureSample.bind(this)
+    this.sampleToIpfs = this.sampleToIpfs.bind(this)
+    this.captureMaster = this.captureMaster.bind(this)
+    this.masterToIpfs = this.masterToIpfs.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
     this.connect = this.connect.bind(this)
     this.multiaddr = React.createRef()
   }
 
-  captureFile (event) {
+  // Hero Image
+  captureHero (event) {
     event.stopPropagation()
     event.preventDefault()
-    this.saveToIpfs(event.target.files)
+    this.heroToIpfs(event.target.files)
   }
-
-
   // Add file to IPFS and return a CID
-  async saveToIpfs ([ file ]) {
+  async heroToIpfs ([ file ]) {
     try {
       const added = await this.state.ipfs.add(file)
       this.setState({ added_file_hash: added.cid.toString() })
-      console.log('IPFS Hash: ', this.state.added_file_hash)
+      console.log('Hero IPFS Hash: ', this.state.added_file_hash)
+    } catch (err) {
+      console.error('saving err: ',err)
+    }
+  }
+  // Sample Image
+  captureSample (event) {
+    event.stopPropagation()
+    event.preventDefault()
+    this.sampleToIpfs(event.target.files)
+  }
+  // Add file to IPFS and return a CID
+  async sampleToIpfs ([ file ]) {
+    try {
+      const added = await this.state.ipfs.add(file)
+      this.setState({ added_sample_hash: added.cid.toString() })
+      console.log('Sample IPFS Hash: ', this.state.added_sample_hash)
+    } catch (err) {
+      console.error('saving err: ',err)
+    }
+  }
+  // Master Image
+  captureMaster (event) {
+    event.stopPropagation()
+    event.preventDefault()
+    this.masterToIpfs(event.target.files)
+  }
+  // Add file to IPFS and return a CID
+  async masterToIpfs ([ file ]) {
+    try {
+      const added = await this.state.ipfs.add(file)
+      this.setState({ added_master_hash: added.cid.toString() })
+      console.log('Master IPFS Hash: ', this.state.added_master_hash)
     } catch (err) {
       console.error('saving err: ',err)
     }
   }
 
-  handleSubmit (event) {
-    event.preventDefault()
-  }
-  changeHandler (event){
-    this.captureFile(event)
-  }
 
   async connect () {
     this.setState({
@@ -144,8 +175,8 @@ class TokenForm extends React.Component {
                     
                     <div className="upload-input-wrapper">
                       <div className="upload-input-label-wrapper">
-                        <label class="input-label">Sample file upload</label>
-                        <label className="input-sub-label">A 10 second sample of your collectible in MP3 format.</label>
+                        <label className="input-label">Hero Image file upload</label>
+                        <label className="input-sub-label">Maximum size 800x800px (JPG or PNG).</label>
                       </div>
                       <input 
                         type="file"
@@ -153,28 +184,72 @@ class TokenForm extends React.Component {
                         name='hero-upload'
                         style={{ display: 'none' }} 
                         id="hero-upload"
-                        onChange={this.captureFile}
+                        onChange={this.captureHero}
                       />
-                      {/* <label htmlFor="hero-upload" onChange={changeHandler}>  */}
                       <label htmlFor="hero-upload" className="button-ui-wrapper"> 
                         <Button variant="contained" color="primary" component="span">
-                        {/* <Button variant="contained" color="primary" component="span" onClick={this.handleSubmit}>  */}
                           Upload 
                         </Button> 
                       </label>
                     </div>
                     <div className="upload-hash-wrapper">
-                      <a id="gateway-link" target='_addedFile'
+                      <a className="gateway-link" target='_addedFile'
                         href={'https://ipfs.io/ipfs/' + this.state.added_file_hash}>
                         {this.state.added_file_hash}
                       </a>
                     </div>
-                    {/* 
-                    <label htmlFor="contained-button-file" onChange={changeHandler}> 
-                      <Button variant="contained" color="primary" component="span"  onClick={handleSubmission}> 
-                        Upload 
-                      </Button> 
-                    </label>  */}
+
+                    <div className="upload-input-wrapper">
+                      <div className="upload-input-label-wrapper">
+                        <label className="input-label">Sample Audio file upload</label>
+                        <label className="input-sub-label">A 10 second sample of your collectible in MP3 format.</label>
+                      </div>
+                      <input 
+                        type="file"
+                        accept="image/*"
+                        name='sample-upload'
+                        style={{ display: 'none' }} 
+                        id="sample-upload"
+                        onChange={this.captureSample}
+                      />
+                      <label htmlFor="sample-upload" className="button-ui-wrapper"> 
+                        <Button variant="contained" color="primary" component="span">
+                          Upload 
+                        </Button> 
+                      </label>
+                    </div>
+                    <div className="upload-hash-wrapper">
+                      <a className="gateway-link" target='_addedFile'
+                        href={'https://ipfs.io/ipfs/' + this.state.added_sample_hash}>
+                        {this.state.added_sample_hash}
+                      </a>
+                    </div>
+
+                    <div className="upload-input-wrapper">
+                      <div className="upload-input-label-wrapper">
+                      <label className="input-label">Master file upload</label>
+                        <label className="input-sub-label">A high-quality version of your collectible in MP3 format.</label>
+                      </div>
+                      <input 
+                        type="file"
+                        accept="image/*"
+                        name='master-upload'
+                        style={{ display: 'none' }} 
+                        id="master-upload"
+                        onChange={this.captureMaster}
+                      />
+                      <label htmlFor="master-upload" className="button-ui-wrapper"> 
+                        <Button variant="contained" color="primary" component="span">
+                          Upload 
+                        </Button> 
+                      </label>
+                    </div> 
+                    <div className="upload-hash-wrapper">
+                      <a className="gateway-link" target='_addedFile'
+                        href={'https://ipfs.io/ipfs/' + this.state.added_master_hash}>
+                        {this.state.added_master_hash}
+                      </a>
+                    </div>
         
                   </Grid>
                 </Grid>

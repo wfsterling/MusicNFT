@@ -27,10 +27,14 @@
 /* <label><button/></label> */
 .upload-wrapper .button-ui-wrapper {
   width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .upload-input-wrapper {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   margin-top: 10px;
   padding-bottom: 10px;
 }
@@ -44,6 +48,10 @@
     border-radius: 4px;
     margin-bottom: 10px;
   }
+    .upload-hash-wrapper .gateway-link {
+      font-size: .8em;
+    }
+    
 .submit {
     /* margin: theme.spacing(3, 0, 2); */
 }
