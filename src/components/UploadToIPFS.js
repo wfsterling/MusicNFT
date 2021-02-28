@@ -40,8 +40,8 @@ class UploadToIPFS extends React.Component {
       //   }
       // )
       const added = await this.state.ipfs.add(file)
-      console.log(added)
       this.setState({ added_file_hash: added.cid.toString() })
+      console.log('IPFS Hash: ', this.state.added_file_hash)
     } catch (err) {
       console.error('saving err: ',err)
     }
@@ -49,24 +49,24 @@ class UploadToIPFS extends React.Component {
 
   // Example #2
   // Add file to IPFS and wrap it in a directory to keep the original filename
-  async saveToIpfsWithFilename ([ file ]) {
-    const fileDetails = {
-      path: file.name,
-      content: file
-    }
-    const options = {
-      wrapWithDirectory: true,
-      progress: (prog) => console.log(`received: ${prog}`)
-    }
+  // async saveToIpfsWithFilename ([ file ]) {
+  //   const fileDetails = {
+  //     path: file.name,
+  //     content: file
+  //   }
+  //   const options = {
+  //     wrapWithDirectory: true,
+  //     progress: (prog) => console.log(`received: ${prog}`)
+  //   }
 
-    try {
-      const added = await this.state.ipfs.add(fileDetails, options)
-      console.log(added)
-      this.setState({ added_file_hash: added.cid.toString() })
-    } catch (err) {
-      console.error("saving error:",err)
-    }
-  }
+  //   try {
+  //     const added = await this.state.ipfs.add(fileDetails, options)
+  //     console.log(added)
+  //     this.setState({ added_file_hash: added.cid.toString() })
+  //   } catch (err) {
+  //     console.error("saving error:",err)
+  //   }
+  // }
 
   handleSubmit (event) {
     event.preventDefault()

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from'./Header';
 import DisplayTokens from'./DisplayTokens';
 import UploadToIPFS from'./UploadToIPFS';
+import Styles from'./Styles';
 import TokenForm from'./TokenForm';
 import Melomaniac from '../abis/Melomaniac.json'
 import './App.css';
@@ -81,6 +82,7 @@ class App extends Component {
             <Route path="/" exact component={() => <DisplayTokens />} />
             <Route path="/tokenForm" exact component={() => <TokenForm />} />
             <Route path="/upload" exact component={() => <UploadToIPFS />} />
+            <Route path="/styles" exact component={() => <Styles />} />
           </Switch>
         </Router>
           

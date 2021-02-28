@@ -10,6 +10,28 @@ p.right-align {
     text-align: right;
 }
 
+/* Forms */
+label {
+    width: 100%;
+}
+label.input-label {
+    font-size: 1em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, .6);
+    width: 100%;
+}
+.upload-input-label-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+input[type=text],
+.MuiTextField-root {
+    color: white;
+    background-color: #21132c;
+    border-color: #445DFF;
+}
+
+
 .header-spacer {
     height: 5em;
     margin-bottom: 10px;

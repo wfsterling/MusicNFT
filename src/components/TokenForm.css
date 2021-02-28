@@ -12,6 +12,38 @@
     width: '100%'; 
     /* margin-top: theme.spacing(3); */
   }
+
+/* Super Wraper for upload component */
+.upload-wrapper {
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px 0;
+  border-top: thin solid #21132c;
+}
+
+
+/* <label><button/></label> */
+.upload-wrapper .button-ui-wrapper {
+  width: 100px;
+}
+.upload-input-wrapper {
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+  .upload-hash-wrapper {
+    padding: 10px 12px;
+    min-height: 38px;
+    border: thin solid #445DFF;
+    width: 100%;
+    color: #445Dff;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
 .submit {
     /* margin: theme.spacing(3, 0, 2); */
 }
