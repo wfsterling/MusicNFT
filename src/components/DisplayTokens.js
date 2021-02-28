@@ -4,6 +4,7 @@ import Melomaniac from '../abis/Melomaniac.json'
 import MusicPreviewCard from './MusicPreviewCard'
 import './App.css';
 import Web3 from 'web3';
+import Button from '@material-ui/core/Button';
 
 // While learning REACT components, used the following
 // to run a list of local list of tokens using MetaMask account:
@@ -97,10 +98,11 @@ class DisplayTokens extends Component {
       <div> 
         <div className="create-bar">
             <Link to="/tokenForm">
-                <button 
-                    type="button"
-                    className="create-btn"
-                    >Create Collectible</button>
+              <Button variant="contained" 
+                color="primary"
+                className="create-btn">
+                  Create Collectible
+                </Button>
             </Link>
         </div>
 

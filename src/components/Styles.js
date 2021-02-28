@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './App.css'
+import './Styles.css'
 import {
   fade,
   ThemeProvider,
@@ -6,168 +8,120 @@ import {
   makeStyles,
   createMuiTheme,
 } from '@material-ui/core/styles';
+
+import Button from '@material-ui/core/Button';
 import InputBase from '@material-ui/core/InputBase';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
-import { purple } from '@material-ui/core/colors';
-
-const CssTextField = withStyles({
-  root: {
-    '& label.Mui-focused': {
-      color: 'purple',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'purple',
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'purple',
-      },
-      '&:hover fieldset': {
-        borderColor: 'blue',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'purple',
-      },
-    },
-  },
-  input: {
-    color: 'white'
-  }
-})(TextField);
-
-const BootstrapInput = withStyles((theme) => ({
-  root: {
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
-  },
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.common.white,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    width: 'auto',
-    padding: '10px 12px',
-    color: theme.palette.common.white,
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-      borderColor: theme.palette.primary.main,
-    },
-  },
-}))(InputBase);
-
-// const useStylesReddit = makeStyles((theme) => ({
-//   root: {
-//     border: '1px solid #e2e2e1',
-//     overflow: 'hidden',
-//     borderRadius: 4,
-//     backgroundColor: '#fcfcfb',
-//     transition: theme.transitions.create(['border-color', 'box-shadow']),
-//     '&:hover': {
-//       backgroundColor: '#fff',
-//     },
-//     '&$focused': {
-//       backgroundColor: '#fff',
-//       boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-//       borderColor: theme.palette.primary.main,
-//     },
-//   },
-//   focused: {},
-// }));
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
-
-// const ValidationTextField = withStyles({
-//   root: {
-//     '& input:valid + fieldset': {
-//       borderColor: 'purple',
-//       borderWidth: 2,
-//     },
-//     '& input:invalid + fieldset': {
-//       borderColor: 'red',
-//       borderWidth: 2,
-//     },
-//     '& input:valid:focus + fieldset': {
-//       borderLeftWidth: 6,
-//       padding: '4px !important', // override inline-style
-//     },
-//   },
-// })(TextField);
+import { purple, blue } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
-    primary: purple,
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#8F00FF',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      // light: will be calculated from palette.secondary.main,
+      main: '#445DFF',
+      // dark: will be calculated from palette.secondary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
   },
 });
 
-export default function CustomizedInputs() {
-  const classes = useStyles();
+class Styles extends Component {
+  constructor(){
+    super();
+    
+    // this.state = {
+    //   account: '',
+    //   contract: null,
+    //   totalSupply: 0,
+    //   data: []
+    // }
+  }
+  
 
-  return null
-  // (
-    // <form className={classes.root} noValidate>
-    //   <CssTextField 
-    //     className={classes.margin}  
-    //     id="custom-css-standard-input" 
-    //     label="Custom CSS" 
-    //   />
-    //   <CssTextField
-    //     className={classes.margin}
-    //     label="Custom CSS"
-    //     variant="outlined"
-    //     id="custom-css-outlined-input"
-    //   />
-    //   <ThemeProvider theme={theme}>
-    //     <TextField
-    //       className={classes.margin}
-    //       label="ThemeProvider"
-    //       id="mui-theme-provider-standard-input"
-    //     />
-    //     <TextField
-    //       className={classes.margin}
-    //       label="ThemeProvider"
-    //       variant="outlined"
-    //       id="mui-theme-provider-outlined-input"
-    //     />
-    //   </ThemeProvider>
-    //   <FormControl className={classes.margin}>
-    //     <InputLabel shrink htmlFor="bootstrap-input">
-    //       Bootstrap
-    //     </InputLabel>
-    //     <BootstrapInput defaultValue="react-bootstrap" id="bootstrap-input" />
-    //   </FormControl>
-      
-    //   <InputBase
-    //     className={classes.margin}
-    //     defaultValue="Naked input"
-    //     inputProps={{ 'aria-label': 'naked' }}
-    //   />
-    // </form>
-  // );
+  render() {
+    
+    return (
+      <ThemeProvider theme={theme}>
+      <div> 
+        <h1>Material Theming</h1>
+        
+        <h2>Colors</h2>
+
+        <section className="cards-wrapper">
+          <div className="color-swatch-container">
+            <div className="color-swatch color-primary" />
+            <p>Primary</p>
+            <p>#8F00FF</p>
+          </div>
+          <div className="color-swatch-container">
+            <div className="color-swatch color-secondary" />
+            <p>Secondary</p>
+            <p>#445DFF</p>
+          </div>
+        </section>  
+        <h2>Typography</h2>
+
+        <h2>Form Inputs</h2>
+        <h3>Buttons</h3>
+        <section className="cards-wrapper">
+
+          <div className="card button-card">
+            <Button variant="contained">Default</Button>
+            <p>Button Default</p>
+          </div>
+
+          <div className="card button-card">
+            <Button variant="contained" color="primary">
+              Primary
+            </Button>
+            <p>Button Default</p>
+          </div>
+          <div className="card button-card">
+            <Button variant="contained" color="secondary">
+              Secondary
+            </Button>
+            <p>Button Default</p>
+          </div>
+          
+        </section>
+
+        <h3>Textfields</h3>
+        <section className="cards-wrapper">
+
+          <div className="card input-card">
+            <TextField id="standard-basic" label="Standard" placeholder="standard-basic"/>
+            <p>starndard-basic</p>
+          </div>
+
+          <div className="card input-card">
+            <TextField id="filled-basic" variant="filled" placeholder="filled-basic" />
+            <p>filled-basic</p>
+          </div>
+
+          <div className="card input-card">
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" placeholder="outlined-basic" />
+            <p>outlined-basic</p>
+          </div>
+
+          {/* <div className="card input-card">
+            <InputLabel shrink htmlFor="customInput">
+              Bootstrap
+            </InputLabel>
+            <MatStyles defaultValue="customInput" id="customInput" />
+          </div> */}
+        </section>
+      </div>
+      </ThemeProvider>
+    );
+  }
 }
+
+export default Styles;

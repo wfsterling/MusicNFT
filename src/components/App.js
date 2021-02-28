@@ -71,21 +71,22 @@ class App extends Component {
 
   render() {
     return (
-      <div> 
-        <Router>
-          <Header
-            account={this.state.account}
-          />
-          <div className="header-spacer"></div>
+      <div>
         
-          <Switch>
-            <Route path="/" exact component={() => <DisplayTokens />} />
-            <Route path="/tokenForm" exact component={() => <TokenForm />} />
-            <Route path="/upload" exact component={() => <UploadToIPFS />} />
-            <Route path="/styles" exact component={() => <Styles />} />
-          </Switch>
-        </Router>
+          <Router>
+            <Header
+              account={this.state.account}
+            />
+            <div className="header-spacer"></div>
           
+            <Switch>
+              <Route path="/" exact component={() => <DisplayTokens />} />
+              <Route path="/tokenForm" exact component={() => <TokenForm />} />
+              <Route path="/upload" exact component={() => <UploadToIPFS />} />
+              <Route path="/styles" exact component={() => <Styles />} />
+            </Switch>
+          </Router>
+        
       </div>
     );
   }

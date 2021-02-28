@@ -1,10 +1,15 @@
 /* Styles go here */
+/* @import './Styles.css' */
+
 body {
     background-color: #21132C;
     color: #ffffff;
 }
-p {
+html, body {
     font-size: 10px;
+}
+p, label, input, a, li, button {
+    font-size: 1.6em;
 }
 p.right-align {
     text-align: right;
@@ -13,6 +18,7 @@ p.right-align {
 /* Forms */
 label {
     width: 100%;
+    font-size: 1.4em;
 }
 label.input-label {
     font-size: 1em;
@@ -24,16 +30,35 @@ label.input-label {
     display: flex;
     flex-direction: column;
 }
-input[type=text],
-.MuiTextField-root {
+input[type=text] {
     color: white;
     background-color: #21132c;
-    border-color: #445DFF;
+    font-size: 1.6em;
+    /* border-bottom: 2px solid #445DFF; */
+    border-radius: 4px;
 }
 
+.MuiTextField-root .MuiFormLabel-root {
+    color: rgba(255, 255, 255, .6);
+    border-color: rgba(68, 93, 255, 1);
+    font-size: 1.6em;
+}
+.MuiButton-root,
+.MuiButton-root .MuiButton-label {
+    font-size: 1.4em;
+}
+
+.MuiTextField-root > .MuiInput-underline:before {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(68, 93, 255, 1);
+}
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 2px solid rgba(68, 93, 255, 0.87) !important;
+}
 
 .header-spacer {
-    height: 5em;
+    height: 6em;
     margin-bottom: 10px;
 }
 .nft-flex-layout {

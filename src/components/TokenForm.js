@@ -9,14 +9,29 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const ipfsClient = require('ipfs-http-client')
 
 
 
 
-
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#8F00FF',
+      // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      // light: will be calculated from palette.secondary.main,
+      main: '#445DFF',
+      // dark: will be calculated from palette.secondary.main,
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+  },
+});
 
 
 function Copyright() {
@@ -114,6 +129,7 @@ class TokenForm extends React.Component {
     if (this.state.ipfs) {
       return (
         <Container component="main" maxWidth="xs">
+          <ThemeProvider theme={theme}>
           {/* <CssBaseline /> */}
           <div className="paper">
             
@@ -283,6 +299,7 @@ class TokenForm extends React.Component {
           <Box mt={5}>
             <Copyright />
           </Box>
+          </ThemeProvider>
         </Container>
       );
     } else {
