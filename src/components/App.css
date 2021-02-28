@@ -1,6 +1,7 @@
 /* Styles go here */
 body {
     background-color: #21132C;
+    color: #ffffff;
 }
 p {
     font-size: 10px;
@@ -9,7 +10,32 @@ p.right-align {
     text-align: right;
 }
 
+/* Forms */
+label {
+    width: 100%;
+}
+label.input-label {
+    font-size: 1em;
+    font-weight: 400;
+    color: rgba(255, 255, 255, .6);
+    width: 100%;
+}
+.upload-input-label-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+input[type=text],
+.MuiTextField-root {
+    color: white;
+    background-color: #21132c;
+    border-color: #445DFF;
+}
 
+
+.header-spacer {
+    height: 5em;
+    margin-bottom: 10px;
+}
 .nft-flex-layout {
     display: flex;
     margin:4em auto;
@@ -23,4 +49,14 @@ p.right-align {
     min-width:280px;
     max-width:320px;
     margin-bottom: 10px;
+}
+
+.create-bar .create-btn {
+    float:right;
+}
+hr.fullDivider {
+    width: 100%;
+}
+.submit-wrapper {
+    text-align: center;
 }

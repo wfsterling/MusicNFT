@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from'./Header';
+import DisplayTokens from'./DisplayTokens';
+import UploadToIPFS from'./UploadToIPFS';
+import Styles from'./Styles';
+import TokenForm from'./TokenForm';
 import Melomaniac from '../abis/Melomaniac.json'
-import MusicPreviewCard from './MusicPreviewCard'
 import './App.css';
 import Web3 from 'web3';
 
-// While learning REACT components, used the following
-// to run a list of local list of tokens using MetaMask account:
-const SAMPLE_AUDIO_FILE = "https://ipfs.io/ipfs/QmUSeLArt2H7Pr1nsj4Md94tkjGyQoWWj2iRFhddSYfany";
-// const HIGHREZ_AUDIO_FILE = "music/RussianBlues-full.mp3";
-const TOKEN_COVER = "https://ipfs.io/ipfs/QmT6iGtffKzqjkgsVVi6jUytcecGLgwd9XjNjcmXcMU2UY";
-// const TOKEN_TITLE = "Russian Blues";
-// const TOKEN_ARTIST = "Nick, Sergey, and William";
-const TOKEN_PRICE = ".001";
 
 class App extends Component {
 
@@ -55,26 +51,7 @@ class App extends Component {
       this.setState({ contract })
       const totalSupply = await contract.methods.totalSupply().call()
       this.setState({ totalSupply })
-      // 
-      
-      
-      
-      for (var i = 1; i <= totalSupply; i++) {
-        // Grab Artist
-        const type_ = 'mmc-token'
-        const artist_ = await contract.methods.artist(i-1).call()
-        const title_ = await contract.methods.title(i-1).call()
-        const description_ = await contract.methods.description(i-1).call()
-        const price_ = await contract.methods.price(i-1).call()
-        const supply_ = await contract.methods.supply(i-1).call()
 
-        let data_ = [ type_, artist_, title_, description_, price_, supply_];
-
-
-        this.setState({
-          data: [ this.state.data, data_ ]
-        });
-      }
     }
     else {
       window.alert("Smart contract not deployed to detected network")
@@ -95,64 +72,20 @@ class App extends Component {
   render() {
     return (
       <div> 
-        <Header
-          account={this.state.account}
-        />
-
-
-        <div className="sample-section">
-            <main role="main" className="nft-flex-layout">
-              { console.log("this.state.data: ", this.state.data[1]) }
-
-              {this.state.data.map((token) => {
-                if(token[0] == 'mmc-token') 
-                  return (
-                    <div className="nft-wrapper">
-                      <MusicPreviewCard
-                        sample={SAMPLE_AUDIO_FILE}
-                        cover={TOKEN_COVER}
-                        title={token[2]} 
-                        artist = {token[1]}
-                        price = {TOKEN_PRICE}
-                      />
-                    </div>
-                  );
-
-                return 
-              })}
-
-
-
-            {/* {this.state.data.map(function(item) { return (
-              <div key={item.mmcId}>
-              <span>
-              <p>{item.title}</p>
-              </span> <span>{item.artist}</span> <span>{item.description}</span> <span>{item.supply}</span>
-              </div> );
-            })} */}
-
-
-              
-              {/* {this.state.tokenArray.map(function(token) {
-                // Object.keys(obj)
-                return (
-                  <div className="nft-wrapper">
-                    <MusicPreviewCard
-                      sample={SAMPLE_AUDIO_FILE}
-                      cover={'images/concert/concert1.jpg'}
-                      title={token.title} 
-                      artist = {token.artist}
-                      price = {token.price}
-                    />
-                  </div>
-                );
-              })} */}
-              
-             
-
-            </main>
-          </div>
-      
+        <Router>
+          <Header
+            account={this.state.account}
+          />
+          <div className="header-spacer"></div>
+        
+          <Switch>
+            <Route path="/" exact component={() => <DisplayTokens />} />
+            <Route path="/tokenForm" exact component={() => <TokenForm />} />
+            <Route path="/upload" exact component={() => <UploadToIPFS />} />
+            <Route path="/styles" exact component={() => <Styles />} />
+          </Switch>
+        </Router>
+          
       </div>
     );
   }
