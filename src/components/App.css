@@ -2,13 +2,13 @@
 /* @import './Styles.css' */
 
 body {
-    background-color: #21132C;
+    background-color: #101010;
     color: #ffffff;
 }
 html, body {
     font-size: 10px;
 }
-p, label, input, a, li, button {
+p, input, a, li, button {
     font-size: 1.6em;
 }
 p.right-align {
@@ -21,7 +21,6 @@ label {
     font-size: 1.4em;
 }
 label.input-label {
-    font-size: 1em;
     font-weight: 400;
     color: rgba(255, 255, 255, .6);
     width: 100%;
@@ -34,27 +33,13 @@ input[type=text] {
     color: white;
     background-color: #21132c;
     font-size: 1.6em;
-    /* border-bottom: 2px solid #445DFF; */
     border-radius: 4px;
 }
 
-.MuiTextField-root .MuiFormLabel-root {
-    color: rgba(255, 255, 255, .6);
-    border-color: rgba(68, 93, 255, 1);
+label.MuiInputLabel-root,
+textarea.MuiInputBase-inputMultiline {
     font-size: 1.6em;
-}
-.MuiButton-root,
-.MuiButton-root .MuiButton-label {
-    font-size: 1.4em;
-}
-
-.MuiTextField-root > .MuiInput-underline:before {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(68, 93, 255, 1);
-}
-.MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-bottom: 2px solid rgba(68, 93, 255, 0.87) !important;
+    line-height: 1.6em;
 }
 
 .header-spacer {
@@ -83,5 +68,13 @@ hr.fullDivider {
     width: 100%;
 }
 .submit-wrapper {
+    text-align: center;
+}
+
+
+
+
+/* Generic */
+.center-align {
     text-align: center;
 }

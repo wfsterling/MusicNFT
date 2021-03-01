@@ -1,5 +1,4 @@
 import React from 'react'
-import "./App.css";
 import "./TokenForm.css";
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -10,6 +9,7 @@ import Link from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import "./App.css";
 
 const ipfsClient = require('ipfs-http-client')
 
@@ -18,6 +18,7 @@ const ipfsClient = require('ipfs-http-client')
 
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: {
       // light: will be calculated from palette.primary.main,
       main: '#8F00FF',
@@ -133,37 +134,35 @@ class TokenForm extends React.Component {
           {/* <CssBaseline /> */}
           <div className="paper">
             
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h4" className="center-align">
               Create new collectible
             </Typography>
             <form id='capture-media' onSubmit={this.handleSubmit} noValidate>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  {/* <ThemeProvider theme={matUI}> */}
                     <TextField
                       autoComplete="artist"
                       name="artist"
-                      variant="outlined"
                       required
                       fullWidth
                       id="artist"
-                      label="Artist/Org"
+                      label="Artist/Org (leave blank to use your username)"
                       autoFocus
-                      color="primary"
+                      variant="filled"
                     />
-                  {/* </ThemeProvider> */}
                 </Grid>
+
                 <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="title"
-                    label="Event/Tile"
-                    name="title"
-                    autoComplete="title"
-                  />
+                    <TextField
+                      name="event"
+                      required
+                      fullWidth
+                      id="event-title"
+                      label="Event/Title"
+                      variant="filled"
+                    />
                 </Grid>
+                
                 <Grid item xs={12}>
                 <TextField
                   id="outlined-multiline-static"
@@ -173,17 +172,16 @@ class TokenForm extends React.Component {
                   fullWidth
                   rows={4}
                   defaultValue=""
-                  variant="outlined"
                 />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    variant="outlined"
                     required
                     fullWidth
                     id="supply"
                     label="Supply"
                     name="supply"
+                    variant="filled"
                   />
                 </Grid>
                 <Grid container justify="flex-end">
