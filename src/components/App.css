@@ -1,25 +1,29 @@
 /* Styles go here */
 /* @import './Styles.css' */
-
+.App-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
 body {
     background-color: #101010;
     color: #ffffff;
 }
-html, body {
+/* html, body {
     font-size: 10px;
-}
-p, input, a, li, button {
+} */
+/* p, input, a, li, button {
     font-size: 1.6em;
-}
+} */
 p.right-align {
     text-align: right;
 }
 
 /* Forms */
-label {
+/* label {
     width: 100%;
     font-size: 1.4em;
-}
+} */
 label.input-label {
     font-weight: 400;
     color: rgba(255, 255, 255, .6);
@@ -32,15 +36,20 @@ label.input-label {
 input[type=text] {
     color: white;
     background-color: #21132c;
-    font-size: 1.6em;
+    /* font-size: 1.6em; */
     border-radius: 4px;
 }
 
-label.MuiInputLabel-root,
+/* label.MuiInputLabel-root,
 textarea.MuiInputBase-inputMultiline {
     font-size: 1.6em;
     line-height: 1.6em;
-}
+} */
+/* button.MuiButton-root .MuiButton-label,
+span.MuiButton-root .MuiButton-label{
+  font-size: initial;
+  font-size: 1.4em;
+} */
 
 .header-spacer {
     height: 6em;
@@ -60,9 +69,14 @@ textarea.MuiInputBase-inputMultiline {
     max-width:320px;
     margin-bottom: 10px;
 }
-
+.create-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 .create-bar .create-btn {
-    float:right;
+    /* float:right; */
+    width: 24em;
 }
 hr.fullDivider {
     width: 100%;

@@ -36,6 +36,7 @@
         padding: 0;
         min-width: 100px;
         flex-grow: 1;
+        border: none;
     }
     .card.input-card {
         padding: 10px;

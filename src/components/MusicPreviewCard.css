@@ -4,7 +4,7 @@
     -webkit-box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
     -moz-box-shadow: 1px 1px 38px 1px rgba(0,0,0,0.4);
 }
-.nft-card {
+.card.nft-card {
     padding:10px;
 }
     .nft-card audio {
@@ -24,6 +24,7 @@
             object-fit: cover;
             
         }
+    .nft-card h3,
     .nft-card h5 {
         color: #343434;
     }
@@ -49,4 +50,5 @@ button {
     background-color:#8F00FF;
     padding:10px 20px;
     color: #ffffff;
+    margin: 0 auto;
 }

@@ -53,6 +53,7 @@ class TokenForm extends React.Component {
   constructor () {
     super()
     this.state = {
+      new_artist: '',
       added_file_hash: null,
       added_sample_hash: null,
       added_master_hash: null
@@ -68,6 +69,8 @@ class TokenForm extends React.Component {
     // this.handleSubmit = this.handleSubmit.bind(this)
     this.connect = this.connect.bind(this)
     this.multiaddr = React.createRef()
+    
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   // Hero Image
@@ -118,7 +121,27 @@ class TokenForm extends React.Component {
       console.error('saving err: ',err)
     }
   }
-
+  handleSubmit (event) {
+    event.preventDefault()
+    console.log("Artist:",this.state.new_artist)
+    console.log("Event/Title:",this.state.new_title)
+    console.log("Description:",this.state.new_artist)
+    console.log("Hero Image:",this.state.added_file_hash)
+    console.log("Sample File:",this.state.added_sample_hash)
+    console.log("Master File:",this.state.added_master_hash)
+  }
+  updateArtistValue(event) {
+    this.state.new_artist = event.target.value
+    console.log("artist: ", this.state.new_artist)
+  }
+  updateTitleValue(event) {
+    this.state.new_title = event.target.value
+    console.log("title: ", this.state.new_title)
+  }
+  updateDescriptionValue(event) {
+    this.state.new_description = event.target.value
+    console.log("description: ", this.state.new_description)
+  }
 
   async connect () {
     this.setState({
@@ -129,7 +152,7 @@ class TokenForm extends React.Component {
   render () {
     if (this.state.ipfs) {
       return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
           <ThemeProvider theme={theme}>
           {/* <CssBaseline /> */}
           <div className="paper">
@@ -143,6 +166,8 @@ class TokenForm extends React.Component {
                     <TextField
                       autoComplete="artist"
                       name="artist"
+                      // value={this.state.new_artist}
+                      onChange={evt => this.updateArtistValue(evt)}
                       required
                       fullWidth
                       id="artist"
@@ -155,6 +180,7 @@ class TokenForm extends React.Component {
                 <Grid item xs={12}>
                     <TextField
                       name="event"
+                      onChange={evt => this.updateTitleValue(evt)}
                       required
                       fullWidth
                       id="event-title"
@@ -166,6 +192,8 @@ class TokenForm extends React.Component {
                 <Grid item xs={12}>
                 <TextField
                   id="outlined-multiline-static"
+                  name='description'
+                  onChange={evt => this.updateDescriptionValue(evt)}
                   label="Description"
                   multiline
                   required
@@ -174,7 +202,7 @@ class TokenForm extends React.Component {
                   defaultValue=""
                 />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                {/* <Grid item xs={12} sm={6}>
                   <TextField
                     required
                     fullWidth
@@ -183,7 +211,7 @@ class TokenForm extends React.Component {
                     name="supply"
                     variant="filled"
                   />
-                </Grid>
+                </Grid> */}
                 <Grid container justify="flex-end">
                   <Grid item className="upload-wrapper">
                     
@@ -201,7 +229,7 @@ class TokenForm extends React.Component {
                         onChange={this.captureHero}
                       />
                       <label htmlFor="hero-upload" className="button-ui-wrapper"> 
-                        <Button variant="contained" color="primary" component="span">
+                        <Button variant="contained" color="secondary" component="span">
                           Upload 
                         </Button> 
                       </label>
@@ -227,7 +255,7 @@ class TokenForm extends React.Component {
                         onChange={this.captureSample}
                       />
                       <label htmlFor="sample-upload" className="button-ui-wrapper"> 
-                        <Button variant="contained" color="primary" component="span">
+                        <Button variant="contained" color="secondary" component="span">
                           Upload 
                         </Button> 
                       </label>
@@ -253,7 +281,7 @@ class TokenForm extends React.Component {
                         onChange={this.captureMaster}
                       />
                       <label htmlFor="master-upload" className="button-ui-wrapper"> 
-                        <Button variant="contained" color="primary" component="span">
+                        <Button variant="contained" color="secondary" component="span">
                           Upload 
                         </Button> 
                       </label>
@@ -284,14 +312,13 @@ class TokenForm extends React.Component {
                 </Grid>
               </Grid>
               
-              <Grid container justify="flex-end">
+              {/* <Grid container justify="flex-end">
                 <Grid item> 
-                  
                   <Link href="/upload" variant="body2">
                     Already have an account? Upload
                   </Link>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </form>
           </div>
           <Box mt={5}>
