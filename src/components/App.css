@@ -1,27 +1,30 @@
 /* Styles go here */
 /* @import './Styles.css' */
-
+.App-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
 body {
-    background-color: #21132C;
+    background-color: #101010;
     color: #ffffff;
 }
-html, body {
+/* html, body {
     font-size: 10px;
-}
-p, label, input, a, li, button {
+} */
+/* p, input, a, li, button {
     font-size: 1.6em;
-}
+} */
 p.right-align {
     text-align: right;
 }
 
 /* Forms */
-label {
+/* label {
     width: 100%;
     font-size: 1.4em;
-}
+} */
 label.input-label {
-    font-size: 1em;
     font-weight: 400;
     color: rgba(255, 255, 255, .6);
     width: 100%;
@@ -33,29 +36,20 @@ label.input-label {
 input[type=text] {
     color: white;
     background-color: #21132c;
-    font-size: 1.6em;
-    /* border-bottom: 2px solid #445DFF; */
+    /* font-size: 1.6em; */
     border-radius: 4px;
 }
 
-.MuiTextField-root .MuiFormLabel-root {
-    color: rgba(255, 255, 255, .6);
-    border-color: rgba(68, 93, 255, 1);
+/* label.MuiInputLabel-root,
+textarea.MuiInputBase-inputMultiline {
     font-size: 1.6em;
-}
-.MuiButton-root,
-.MuiButton-root .MuiButton-label {
-    font-size: 1.4em;
-}
-
-.MuiTextField-root > .MuiInput-underline:before {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgba(68, 93, 255, 1);
-}
-.MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-bottom: 2px solid rgba(68, 93, 255, 0.87) !important;
-}
+    line-height: 1.6em;
+} */
+/* button.MuiButton-root .MuiButton-label,
+span.MuiButton-root .MuiButton-label{
+  font-size: initial;
+  font-size: 1.4em;
+} */
 
 .header-spacer {
     height: 6em;
@@ -75,13 +69,26 @@ input[type=text] {
     max-width:320px;
     margin-bottom: 10px;
 }
-
+.create-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
 .create-bar .create-btn {
-    float:right;
+    /* float:right; */
+    width: 24em;
 }
 hr.fullDivider {
     width: 100%;
 }
 .submit-wrapper {
+    text-align: center;
+}
+
+
+
+
+/* Generic */
+.center-align {
     text-align: center;
 }

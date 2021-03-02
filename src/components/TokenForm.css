@@ -1,17 +1,14 @@
 .paper {
-    /* margin-top: theme.spacing(8); */
-    display: 'flex';
-    flex-direction: 'column';
-    align-items: 'center';
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #21132c;
   }
-.avatar {
-    
-    /* background-color: theme.palette.secondary.main; */
-  }
-.form {
-    width: '100%'; 
-    /* margin-top: theme.spacing(3); */
-  }
+
+.paper > h1 {
+  margin:.4em 0 .8em;
+}
 
 /* Super Wraper for upload component */
 .upload-wrapper {
@@ -36,7 +33,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.2);
 }
   .upload-hash-wrapper {
     padding: 10px 12px;

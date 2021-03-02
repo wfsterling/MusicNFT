@@ -98,7 +98,7 @@ class Styles extends Component {
 
           <div className="card input-card">
             <TextField id="standard-basic" label="Standard" placeholder="standard-basic"/>
-            <p>starndard-basic</p>
+            <p>standard-basic</p>
           </div>
 
           <div className="card input-card">

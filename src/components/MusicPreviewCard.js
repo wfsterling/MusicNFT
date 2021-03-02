@@ -15,8 +15,8 @@ class MusicPreviewCard extends Component {
                     <img src={this.props.cover} alt="cover" />
                 </div>
                 {/* Still learning how to grab token data. Currently able to show name, address and the symbol */}
-                <h5>{this.props.title}</h5>
-                <p>{this.props.artist}</p>
+                <h3>{this.props.title}</h3>
+                <h5>{this.props.artist}</h5>
                 <ReactAudioPlayer
                     // For now, they're all loading a local music file to preview
                     src={this.props.sample}
