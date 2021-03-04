@@ -1,6 +1,7 @@
 /* menu */
 .playerMenu {
     width: 100%;
+    margin-bottom: 10px;
 }
     .playerMenu .playerMenuList {
         list-style:none;
@@ -19,6 +20,7 @@
     .playerMenuList .menulist-icon.MuiSvgIcon-root {
         margin-right:.8em;
         flex-basis: 1.2em;
+        opacity: .6;
     }
     .playerMenuList li span {
         flex-grow: 4;
@@ -27,4 +29,20 @@
         align-self: flex-end;
         margin-right: 0;
         flex-basis: 2em;
+    }
+
+
+
+
+
+/* Section */
+.musicSection {
+    min-width: 100%;
+    background-color: #21132C;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+    .musicSection h3 {
+        font-size: 1.4em;
+        font-weight: 300;
     }

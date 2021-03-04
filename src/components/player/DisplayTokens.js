@@ -95,42 +95,26 @@ class DisplayTokens extends Component {
 
   render() {
     return (
-      <div> 
-        {/* <div className="create-bar">
-            <Link to="/tokenForm">
-              <Button variant="contained" 
-                color="primary"
-                className="create-btn">
-                  Create Collectible
-                </Button>
-            </Link>
-        </div> */}
+      <div className="sample-section">
+          
+          { console.log("this.state.data: ", this.state.data[1]) }
 
-        <div className="sample-section">
-            <main role="main" className="nft-flex-layout">
-              { console.log("this.state.data: ", this.state.data[1]) }
+          {this.state.data.map((token) => {
+            if(token[0] === 'mmc-token') 
+              return (
+                <div className="nft-wrapper">
+                  <MusicPreviewCard
+                    sample={SAMPLE_AUDIO_FILE}
+                    cover={TOKEN_COVER}
+                    title={token[2]} 
+                    artist = {token[1]}
+                    price = {TOKEN_PRICE}
+                  />
+                </div>
+              );
 
-              {this.state.data.map((token) => {
-                if(token[0] === 'mmc-token') 
-                  return (
-                    <div className="nft-wrapper">
-                      <MusicPreviewCard
-                        sample={SAMPLE_AUDIO_FILE}
-                        cover={TOKEN_COVER}
-                        title={token[2]} 
-                        artist = {token[1]}
-                        price = {TOKEN_PRICE}
-                      />
-                    </div>
-                  );
-
-                return null
-              })}
-
-
-            </main>
-          </div>
-      
+            return null
+          })}
       </div>
     );
   }

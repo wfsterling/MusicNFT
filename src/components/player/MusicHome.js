@@ -3,8 +3,10 @@ import { Link, withRouter } from "react-router-dom";
 import '../App.css';
 import './MusicHome.css';
 import DisplayTokens from './DisplayTokens';
+import PlayableCard from './PlayableCard';
 import Footer from './Footer';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Layers from '@material-ui/icons/Layers';
 import ChevronRight from '@material-ui/icons/ChevronRight'
 import Album from '@material-ui/icons/Album'
@@ -31,16 +33,7 @@ class MusicHome extends Component {
   
     render() {
       return (
-        <div> 
-          {/* <div className="create-bar">
-              <Link to="/tokenForm">
-                <Button variant="contained" 
-                  color="primary"
-                  className="create-btn">
-                    Create Collectible
-                  </Button>
-              </Link>
-          </div> */}
+        <div>
   
           <div className="playerMenu">
               <ul className="playerMenuList">
@@ -62,9 +55,16 @@ class MusicHome extends Component {
               </ul>
           </div>
 
+          {/* Recently Added Section */}
+          <div className="musicSection section--recentlyAdded">
+            <Typography variant="h3">Recently Added</Typography>
+            <div classsName="scrollableContent">
+              {/* <DisplayTokens /> */}
+              <PlayableCard />
+            </div>
+          </div>
 
-
-          <DisplayTokens />
+          
 
           <Footer />
         

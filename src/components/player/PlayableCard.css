@@ -1,0 +1,27 @@
+.playableCard {
+    width: 156px;
+    padding: 0px;
+    margin: 10px;
+}
+
+    .playableCard > .playableCard-Hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        width: 156px;
+        height: 156px;
+        margin-bottom: 10px;
+    }
+        .playableCard > .playableCard-Hero > img {
+            flex: 1;
+            height: 100%;
+        }
+    .playableCard > h6 { 
+        font-size: 1.1em;
+        font-weight: 300;
+    }
+    .playableCard > h6.MuiTypography-subtitle1 { 
+        font-size: 1em;
+        font-weight: 300;
+    }
