@@ -8,6 +8,10 @@
         margin: 2px 0;
         padding: 2px;
     }
+        .playerMenuList a {
+            text-decoration: none;
+            color: #ffffff;
+        }
         .playerMenuList li {
             padding: .8em;
             font-size: 1.3em;

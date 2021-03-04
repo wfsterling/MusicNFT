@@ -37,11 +37,13 @@ class MusicHome extends Component {
   
           <div className="playerMenu">
               <ul className="playerMenuList">
-                  <li>
+              <Link to="/tokenForm"><li>
+                    
                       <Layers fontSize="large" className="menulist-icon" />
-                      <span>Collections I'm following</span>
+                      <span>Create New Collectible</span>
                       <ChevronRight fontSize="large" className="angle-button" />
-                  </li>
+                    
+                  </li></Link>
                   <li>
                       <Album fontSize="large" className="menulist-icon" />
                       <span>Artists</span>
