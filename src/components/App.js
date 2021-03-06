@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from'./Header';
-import DisplayTokens from'./player/DisplayTokens';
+import DisplayTokens from'./library/DisplayTokens';
 import UploadToIPFS from'./UploadToIPFS';
 import Styles from'./Styles';
 import TokenForm from'./TokenForm';
-import MusicHome from'./player/MusicHome';
+import MusicHome from'./library/MusicHome';
 import Melomaniac from '../abis/Melomaniac.json'
 import './App.css';
 import Web3 from 'web3';

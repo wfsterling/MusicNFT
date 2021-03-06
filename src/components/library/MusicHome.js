@@ -11,6 +11,16 @@ import Layers from '@material-ui/icons/Layers';
 import ChevronRight from '@material-ui/icons/ChevronRight'
 import Album from '@material-ui/icons/Album'
 import LibraryMusic from '@material-ui/icons/LibraryMusic'
+import { PlayButton, Timer } from 'react-soundplayer/components';
+// it's just an alias for 'withSoundCloudAudio' but makes code clearer
+import { withCustomAudio } from 'react-soundplayer/addons';
+import Player from '../Player'
+
+
+const streamUrl = 'https://ipfs.io/ipfs/QmbYx6iBhJSuYY4SBvyThTsDeoSiNMapM79WQQEccicENm';
+// some track meta information
+const trackTitle = 'Russian Blues';
+
 
 
 class MusicHome extends Component {
@@ -19,7 +29,7 @@ class MusicHome extends Component {
     //   this.loadBlockchainData()
     }
 
-  
+    
     async loadBlockchainData() {
      
     } 
@@ -37,13 +47,14 @@ class MusicHome extends Component {
   
           <div className="playerMenu">
               <ul className="playerMenuList">
-              <Link to="/tokenForm"><li>
-                    
-                      <Layers fontSize="large" className="menulist-icon" />
-                      <span>Create New Collectible</span>
-                      <ChevronRight fontSize="large" className="angle-button" />
-                    
-                  </li></Link>
+                <Link to="/tokenForm">
+                  <li>
+                    <Layers fontSize="large" className="menulist-icon" />
+                    <span>Create New Collectible</span>
+                    <ChevronRight fontSize="large" className="angle-button" />
+                  
+                  </li>
+                </Link>
                   <li>
                       <Album fontSize="large" className="menulist-icon" />
                       <span>Artists</span>
@@ -66,7 +77,8 @@ class MusicHome extends Component {
             </div>
           </div>
 
-          
+          <Player
+            trackTitle={this.trackTitle}/>
 
           <Footer />
         
