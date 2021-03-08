@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import './Header.css'
-import logo from '../images/logo-white.png'
 import purpleLogo from '../images/logo-purple.png'
 import Menu from '@material-ui/icons/Menu';
 

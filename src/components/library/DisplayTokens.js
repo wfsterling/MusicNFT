@@ -4,7 +4,6 @@ import Melomaniac from '../../abis/Melomaniac.json'
 import MusicPreviewCard from './MusicPreviewCard'
 import '../App.css';
 import Web3 from 'web3';
-import Button from '@material-ui/core/Button';
 
 // While learning REACT components, used the following
 // to run a list of local list of tokens using MetaMask account:

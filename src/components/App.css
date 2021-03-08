@@ -1,7 +1,6 @@
 /* Styles go here */
 /* @import './Styles.css' */
 .App-container {
-    max-width: 1400px;
     margin: 0 auto;
     padding: 0;
 }
@@ -106,7 +105,7 @@ hr.fullDivider {
     .footer .footer-logo-player {
         height: 50px;
         margin: 0 auto;
-        text-align: center;
+        text-align: left;
     }
     .footer .footer-logo-player img {
         height: 100%;
