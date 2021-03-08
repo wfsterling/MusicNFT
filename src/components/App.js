@@ -82,7 +82,7 @@ class App extends Component {
           
             <Switch>
               <Route path="/" exact component={() => <MusicHome />} />
-              <Route path="displayTokens" exact component={() => <DisplayTokens />} />
+              <Route path="/displayTokens" exact component={() => <DisplayTokens />} />
               <Route path="/tokenForm" exact component={() => <TokenForm />} />
               <Route path="/upload" exact component={() => <UploadToIPFS />} />
               {/* Experiments */}
