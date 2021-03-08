@@ -131,15 +131,22 @@ class TokenForm extends React.Component {
     console.log("Master File:",this.state.added_master_hash)
   }
   updateArtistValue(event) {
-    this.state.new_artist = event.target.value
+    this.setState({
+      new_artist : event.target.value
+    })
     console.log("artist: ", this.state.new_artist)
   }
+
   updateTitleValue(event) {
-    this.state.new_title = event.target.value
+    this.setState({
+      new_title : event.target.value
+    })
     console.log("title: ", this.state.new_title)
   }
   updateDescriptionValue(event) {
-    this.state.new_description = event.target.value
+    this.setState({
+      new_description : event.target.value
+    })
     console.log("description: ", this.state.new_description)
   }
 

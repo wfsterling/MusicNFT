@@ -1,9 +1,8 @@
 /* Styles go here */
 /* @import './Styles.css' */
 .App-container {
-    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0;
 }
 body {
     background-color: #101010;
@@ -52,7 +51,7 @@ span.MuiButton-root .MuiButton-label{
 } */
 
 .header-spacer {
-    height: 6em;
+    height: 3.6em;
     margin-bottom: 10px;
 }
 .nft-flex-layout {
@@ -92,3 +91,22 @@ hr.fullDivider {
 .center-align {
     text-align: center;
 }
+
+
+
+
+.footer {
+    background-color: #101010;
+    height: 4em;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+    .footer .footer-logo-player {
+        height: 50px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    .footer .footer-logo-player img {
+        height: 100%;
+    }

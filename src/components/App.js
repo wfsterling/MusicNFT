@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from'./Header';
-import DisplayTokens from'./DisplayTokens';
+import DisplayTokens from'./library/DisplayTokens';
 import UploadToIPFS from'./UploadToIPFS';
-import Styles from'./Styles';
 import TokenForm from'./TokenForm';
+import MusicHome from'./library/MusicHome';
+import Player from'./Player/Player';
 import Melomaniac from '../abis/Melomaniac.json'
 import './App.css';
 import Web3 from 'web3';
@@ -80,13 +81,20 @@ class App extends Component {
             <div className="header-spacer"></div>
           
             <Switch>
-              <Route path="/" exact component={() => <DisplayTokens />} />
+              <Route path="/" exact component={() => <MusicHome />} />
+              <Route path="/displayTokens" exact component={() => <DisplayTokens />} />
               <Route path="/tokenForm" exact component={() => <TokenForm />} />
               <Route path="/upload" exact component={() => <UploadToIPFS />} />
-              <Route path="/styles" exact component={() => <Styles />} />
+              {/* Experiments */}
+              <Route path="/musicHome" exact component={() => <MusicHome />} />
             </Switch>
           </Router>
         
+
+          {/* Hard coded, but passing an IPFS file to the player */}
+          <Player
+            song='https://ipfs.io/ipfs/QmbYx6iBhJSuYY4SBvyThTsDeoSiNMapM79WQQEccicENm'
+          />
       </div>
     );
   }
